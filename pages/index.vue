@@ -1,10 +1,11 @@
+import alvarosacari.github.io from '../nuxt.config';
 <template>
   <v-layout>
     <v-flex xs12>
       <Breadcrumbs :items="breadcrumbs" />
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          Welcome to alvarosacari.github.io page
         </v-card-title>
         <v-card-text>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab possimus quibusdam sed recusandae tempora a perferendis nostrum. Esse impedit ducimus quas aliquam cumque ut laudantium culpa odio. In, consectetur esse.</p>
