@@ -1,0 +1,44 @@
+{
+  "name": "premade-nuxt-layout",
+  "version": "1.0.0",
+  "description": "My top-notch Nuxt.js project",
+  "author": "Alvaro Sacari Alanoca",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "nuxt": "^2.10.0",
+    "@nuxtjs/axios": "^5.6.0",
+    "@nuxtjs/pwa": "^3.0.0-beta.19"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.9.0",
+    "@nuxtjs/eslint-config": "^1.1.2",
+    "@nuxtjs/eslint-module": "^1.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-plugin-nuxt": ">=0.4.3",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.2",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "vue-jest": "^3.0.5"
+  }
+}
