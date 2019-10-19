@@ -6,7 +6,7 @@
     app
   >
     <span>
-      Premade Layout © {{ year }} Developed by
+      © {{ year }} Developed by
       <a
         class="white--text"
         :href="github.url"
