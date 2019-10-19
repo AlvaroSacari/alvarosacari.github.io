@@ -29,7 +29,7 @@ export default {
         drawer: true,
         miniVariant: false
       },
-      title: 'Premade Layout'
+      title: 'Alvaro Sacari'
     }
   }
 }
