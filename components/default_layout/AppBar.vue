@@ -6,7 +6,10 @@
     fixed
     app
   >
-    <v-app-bar-nav-icon v-if="!$vuetify.breakpoint.lgAndUp" @click="toggleNavigationDrawer" />
+    <v-app-bar-nav-icon
+      v-if="!$vuetify.breakpoint.lgAndUp"
+      @click="toggleNavigationDrawer"
+    />
     <v-toolbar-title>{{ title }}</v-toolbar-title>
     <v-spacer />
   </v-app-bar>
