@@ -2,27 +2,31 @@
   <v-app-bar
     dark
     color="primary"
-    :clipped-left="value.clipped"
+    :clipped-left="clipped"
     fixed
     app
   >
-    <v-app-bar-nav-icon @click.stop="value.drawer = !value.drawer" />
-    <v-toolbar-title v-text="title" />
+    <v-app-bar-nav-icon v-if="!$vuetify.breakpoint.lgAndUp" @click="toggleNavigationDrawer" />
+    <v-toolbar-title>{{ title }}</v-toolbar-title>
     <v-spacer />
   </v-app-bar>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  props: {
-    value: {
-      type: Object,
-      default () { return {} }
-    },
-    title: {
-      type: String,
-      default: ''
-    }
+  computed: {
+    ...mapState({
+      clipped: state => state.navigationDrawer.clipped,
+      title: state => state.profile.name
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      toggleNavigationDrawer: 'navigationDrawer/toggleNavigationDrawer'
+    })
   }
 }
 </script>

@@ -73,7 +73,7 @@ export default {
           error: colors.red
         },
         dark: {
-          primary: colors.blue,
+          primary: colors.red,
           accent: colors.orange,
           secondary: colors.blue.lighten2,
           success: colors.green,

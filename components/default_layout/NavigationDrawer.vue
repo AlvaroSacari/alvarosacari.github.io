@@ -1,8 +1,8 @@
 <template>
   <v-navigation-drawer
-    v-model="value.drawer"
-    :mini-variant="value.miniVariant"
-    :clipped="value.clipped"
+    v-model="showDrawer"
+    :mini-variant="miniVariant"
+    :clipped="clipped"
     fixed
     app
   >
@@ -16,8 +16,8 @@
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title v-text="user.name" />
-                <v-list-item-subtitle v-text="user.email" />
+                <v-list-item-title v-text="name" />
+                <v-list-item-subtitle v-text="email" />
               </v-list-item-content>
 
               <v-list-item-action>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import NavigationDrawerList from '~/components/core/NavigationDrawerList.vue'
 
 export default {
@@ -63,20 +64,8 @@ export default {
     NavigationDrawerList
   },
 
-  props: {
-    value: {
-      type: Object,
-      default () { return {} }
-    }
-  },
-
   data () {
     return {
-      user: {
-        name: 'Alvaro Sacari',
-        email: 'alvaro.sacari@gmail.com'
-      },
-
       userMenu: [
         { title: 'Profile', icon: 'mdi-account' },
         { title: 'Logout', icon: 'mdi-exit-to-app' }
@@ -85,46 +74,27 @@ export default {
   },
 
   computed: {
-    items () {
-      const items = [
-        {
-          title: 'Home',
-          icon: 'mdi-home',
-          to: '/'
-        },
-        {
-          title: 'About',
-          icon: 'mdi-account',
-          to: '/about'
-        },
-        {
-          title: 'Portfolio',
-          icon: 'mdi-rocket',
-          to: '/portfolio'
-        },
-        {
-          title: 'Blog',
-          icon: 'mdi-book',
-          to: '/blog'
-        },
-        {
-          title: 'Contact',
-          icon: 'mdi-account-plus',
-          to: '/contact'
-        }
-      ]
+    ...mapState({
+      items: state => state.navigationDrawer.items,
+      clipped: state => state.navigationDrawer.clipped,
+      miniVariant: state => state.navigationDrawer.miniVariant,
+      name: state => state.profile.name,
+      email: state => state.profile.email
+    }),
 
-      return items
+    showDrawer: {
+      get () {
+        return this.$store.state.navigationDrawer.showDrawer
+      },
+      set (show) {
+        this.$store.commit('navigationDrawer/REPLACE_SHOW_NAVIGATION_DRAWER', { show })
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
-.v-navigation-drawer {
-  transition: none !important;
-}
-
 .lightbox {
   box-shadow: 0 0 20px inset rgba(0, 0, 0, 0.2);
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 72px);

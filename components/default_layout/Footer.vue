@@ -1,7 +1,7 @@
 <template>
   <v-footer
     color="primary"
-    :inset="!inset"
+    :inset="!clipped"
     dark
     app
   >
@@ -9,32 +9,24 @@
       © {{ year }} Developed by
       <a
         class="white--text"
-        :href="github.url"
+        :href="linkedIn"
         target="_blank"
-      >{{ github.user }}</a>
+      >{{ name }}</a>
     </span>
   </v-footer>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  props: {
-    inset: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  data () {
-    return {
-      github: {
-        url: 'https://github.com/alvarosacari',
-        user: 'Alvaro Sacari'
-      }
-    }
-  },
-
   computed: {
+    ...mapState({
+      clipped: state => state.navigationDrawer.clipped,
+      name: state => state.profile.name,
+      linkedIn: state => state.profile.linkedIn
+    }),
+
     year () {
       return new Date().getFullYear()
     }

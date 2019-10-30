@@ -1,25 +1,29 @@
 import alvarosacari.github.io from '../nuxt.config';
 <template>
-  <v-layout>
-    <v-flex xs12>
-      <Breadcrumbs :items="breadcrumbs" />
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to alvarosacari.github.io page
-        </v-card-title>
-        <v-card-text>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab possimus quibusdam sed recusandae tempora a perferendis nostrum. Esse impedit ducimus quas aliquam cumque ut laudantium culpa odio. In, consectetur esse.</p>
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <div>
+    <v-parallax
+      height="300"
+      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <v-col class="text-center" cols="12">
+          <h1 class="display-1 font-weight-thin mb-4">
+            Alvaro Sacari
+          </h1>
+          <h4 class="subheading">
+            Desarrollador Frontend
+          </h4>
+        </v-col>
+      </v-row>
+    </v-parallax>
+  </div>
 </template>
 
 <script>
-import Breadcrumbs from '~/components/core/Breadcrumbs.vue'
-
 export default {
-  components: { Breadcrumbs },
 
   data () {
     return {

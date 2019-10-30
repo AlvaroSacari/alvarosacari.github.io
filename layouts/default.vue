@@ -1,19 +1,18 @@
 <template>
   <v-app>
-    <NavigationDrawer v-model="layout" />
-    <AppBar v-model="layout" :title="title" />
+    <NavigationDrawer v-if="!$vuetify.breakpoint.lgAndUp" />
+    <AppBar />
 
     <v-content>
-      <v-container fluid>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-content>
 
-    <Footer :inset="layout.clipped" />
+    <Footer />
   </v-app>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Footer from '~/components/default_layout/Footer.vue'
 import NavigationDrawer from '~/components/default_layout/NavigationDrawer.vue'
 import AppBar from '~/components/default_layout/AppBar.vue'
@@ -22,15 +21,17 @@ export default {
   components: {
     Footer, NavigationDrawer, AppBar
   },
-  data () {
-    return {
-      layout: {
-        clipped: true,
-        drawer: true,
-        miniVariant: false
-      },
-      title: 'Alvaro Sacari'
+
+  created () {
+    if (this.$vuetify.breakpoint.lgAndUp) {
+      this.replaceShowNavigationDrawer({ show: true })
     }
+  },
+
+  methods: {
+    ...mapActions({
+      replaceShowNavigationDrawer: 'navigationDrawer/replaceShowNavigationDrawer'
+    })
   }
 }
 </script>
