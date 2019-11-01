@@ -3,6 +3,7 @@
     <h2 class="title text-uppercase font-weight-medium mb-3">
       Habilidades
     </h2>
+
     <v-row>
       <v-col cols="12" sm="4">
         <v-card class="mb-3">
