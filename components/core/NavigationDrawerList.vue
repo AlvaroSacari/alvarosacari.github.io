@@ -1,5 +1,5 @@
 <template>
-  <v-list dense nav>
+  <v-list dense>
     <template v-for="(item,i) in items">
       <template v-if="!item.items">
         <v-list-item

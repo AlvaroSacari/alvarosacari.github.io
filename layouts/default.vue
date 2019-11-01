@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavigationDrawer v-if="!$vuetify.breakpoint.lgAndUp" />
+    <NavigationDrawer />
     <AppBar />
 
     <v-content>

@@ -5,31 +5,26 @@ import {
 
 export const state = () => ({
   showDrawer: false,
-  clipped: true,
+  clipped: false,
   miniVariant: false,
   items: [
     {
-      title: 'Home',
+      title: 'Inicio',
       icon: 'mdi-home',
       to: '/'
     },
     {
-      title: 'About',
+      title: 'Acerca de',
       icon: 'mdi-account',
       to: '/about'
     },
     {
-      title: 'Portfolio',
+      title: 'Portafolio',
       icon: 'mdi-rocket',
       to: '/portfolio'
     },
     {
-      title: 'Blog',
-      icon: 'mdi-book',
-      to: '/blog'
-    },
-    {
-      title: 'Contact',
+      title: 'Contacto',
       icon: 'mdi-account-plus',
       to: '/contact'
     }

@@ -1,0 +1,66 @@
+<template>
+  <v-container>
+    <h3 class="headline my-2 primary--text">
+      Educación
+    </h3>
+
+    <v-row>
+      <v-col
+        v-for="(item,i) in universities"
+        :key="i"
+        cols="12"
+        sm="6"
+      >
+        <v-card
+          min-height="326"
+          style="margin-left: auto; margin-right: auto;"
+        >
+          <v-img
+            :src="item.img"
+            height="200px"
+          />
+
+          <v-card-title style="word-break: normal">
+            {{ item.title }}
+          </v-card-title>
+
+          <v-card-text>
+            <div v-if="item.subtitle1 !== ''">
+              {{ item.subtitle1 }}
+            </div>
+            <div v-if="item.subtitle2 !== ''">
+              {{ item.subtitle2 }}
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      universities: [
+        {
+          img: require('~/assets/images/unjbg.jpg'),
+          title: 'Universidad Nacional Jorge Basadre Grohmann',
+          subtitle1: 'Bachiller - E.A.P. de Ingeniería en Informática y Sistemas',
+          subtitle2: ''
+        },
+        {
+          img: require('~/assets/images/online_learning.jpeg'),
+          title: 'Cursos en línea de Desarrollo Web',
+          subtitle1: '+450 horas',
+          subtitle2: 'Udemy, Platzi, Youtube, Blogs, etc.'
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
