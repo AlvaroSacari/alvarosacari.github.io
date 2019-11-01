@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h3 class="headline my-2 primary--text">
+    <h2 class="title text-uppercase font-weight-medium mb-3">
       Habilidades
-    </h3>
+    </h2>
     <v-row>
       <v-col cols="12" sm="4">
         <v-card class="mb-3">
@@ -21,55 +21,20 @@
           </v-card-text>
           <v-divider />
           <v-card-text>
-            <div class="text-center">
-              <v-chip
-                v-for="(item, i) in skills.frontend"
-                :key="i"
-                pill
-                class="ma-2"
-              >
-                <!-- <v-avatar left>
-                  <v-img :src="item.img" />
-                </v-avatar> -->
-                {{ item.name }}
-              </v-chip>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col cols="12" sm="4">
-        <v-card class="mb-3">
-          <v-card-title>Backend</v-card-title>
-          <v-card-text class="text-center">
-            <v-chip
-              v-for="(item, i) in skills.backend"
-              :key="i"
-              pill
-              class="ma-2"
-            >
-              <!-- <v-avatar left>
-                <v-img :src="item.img" />
-              </v-avatar> -->
-              {{ item.name }}
-            </v-chip>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col cols="12" sm="4">
-        <v-card>
-          <v-card-title>Otros</v-card-title>
-          <v-card-text class="text-center">
-            <v-chip
-              v-for="(item, i) in skills.others"
-              :key="i"
-              pill
-              class="ma-2"
-            >
-              <!-- <v-avatar left>
-                <v-img :src="item.img" />
-              </v-avatar> -->
-              {{ item.name }}
-            </v-chip>
+            <v-chip-group column>
+              <div class="text-center">
+                <v-chip
+                  v-for="(item, i) in skills.frontend"
+                  :key="i"
+                  pill
+                >
+                  <v-avatar left>
+                    <v-img :src="item.img" />
+                  </v-avatar>
+                  {{ item.name }}
+                </v-chip>
+              </div>
+            </v-chip-group>
           </v-card-text>
         </v-card>
       </v-col>

@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h3 class="headline my-2 primary--text">
+    <h2 class="title text-uppercase font-weight-medium mb-3">
       Educación
-    </h3>
+    </h2>
 
     <v-row>
       <v-col
