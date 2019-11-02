@@ -5,6 +5,7 @@ import alvarosacari.github.io from '../nuxt.config';
     <AboutSection />
     <EducationSection />
     <SkillsSection />
+    <PortfolioSection />
   </div>
 </template>
 
@@ -13,10 +14,11 @@ import StartSection from '~/components/index_sections/Start.vue'
 import AboutSection from '~/components/index_sections/About.vue'
 import EducationSection from '~/components/index_sections/Education.vue'
 import SkillsSection from '~/components/index_sections/Skills.vue'
+import PortfolioSection from '~/components/index_sections/Portfolio.vue'
 
 export default {
   components: {
-    StartSection, AboutSection, EducationSection, SkillsSection
+    StartSection, AboutSection, EducationSection, SkillsSection, PortfolioSection
   },
 
   data () {
