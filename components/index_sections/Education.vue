@@ -12,7 +12,7 @@
         sm="6"
       >
         <v-card
-          min-height="326"
+          min-height="100%"
           style="margin-left: auto; margin-right: auto;"
         >
           <v-img
