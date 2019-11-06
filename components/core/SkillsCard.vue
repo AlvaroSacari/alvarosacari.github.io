@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-3" min-height="100%">
+  <v-card hover outlined class="mb-3" min-height="100%">
     <v-app-bar flat dense>
       <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer />

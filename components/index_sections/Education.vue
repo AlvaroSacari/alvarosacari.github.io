@@ -8,19 +8,20 @@
       <v-col
         v-for="(item,i) in universities"
         :key="i"
-        cols="12"
-        sm="6"
       >
         <v-card
+          hover
+          outlined
           min-height="100%"
-          style="margin-left: auto; margin-right: auto;"
+          max-width="425px"
+          style="margin-left:auto;margin-right:auto"
         >
           <v-img
             :src="item.img"
             height="200px"
           />
 
-          <v-card-title style="word-break: normal">
+          <v-card-title>
             {{ item.title }}
           </v-card-title>
 
