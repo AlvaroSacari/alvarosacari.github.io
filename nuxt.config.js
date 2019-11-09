@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from 'vuetify/lib/util/colors'
 
 export default {
   mode: 'spa',
@@ -54,6 +54,12 @@ export default {
   */
   axios: {
   },
+
+  // router config
+  router: {
+    base: '/'
+  },
+
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
