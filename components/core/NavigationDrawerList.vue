@@ -4,8 +4,9 @@
       <template v-if="!item.items">
         <v-list-item
           :key="`list${i}`"
-          :to="item.to"
+          :to="item.to ? item.to : null"
           exact
+          color="primary"
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
