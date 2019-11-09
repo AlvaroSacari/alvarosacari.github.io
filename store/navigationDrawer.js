@@ -11,22 +11,22 @@ export const state = () => ({
     {
       title: 'Inicio',
       icon: 'mdi-home',
-      to: '/'
+      to: { name: 'index' }
     },
     {
       title: 'Acerca de',
       icon: 'mdi-account',
-      to: '/about'
+      to: { name: 'index', hash: '#about' }
     },
     {
       title: 'Portafolio',
       icon: 'mdi-rocket',
-      to: '/portfolio'
+      to: { name: 'index', hash: '#portfolio' }
     },
     {
       title: 'Contacto',
       icon: 'mdi-account-plus',
-      to: '/contact'
+      to: { name: 'index', hash: '#contact' }
     }
   ]
 })
