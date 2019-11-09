@@ -12,8 +12,10 @@ export default function (to, from, savedPosition) {
     scrollTo = savedPosition.y
   }
 
-  const options = {
-    offset: breakpoint.smAndDown ? 56 : 64
+  const options = { offset: 0 }
+
+  if (process.env.NODE_ENV !== 'production') {
+    options.offset = breakpoint.smAndDown ? 56 : 64
   }
 
   goTo(scrollTo, options)
