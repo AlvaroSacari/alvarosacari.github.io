@@ -6,7 +6,7 @@
     app
   >
     <span>
-      © {{ year }} Developed by
+      © {{ year }} Desarrollador por
       <a
         class="white--text"
         :href="linkedIn"
