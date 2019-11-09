@@ -1,10 +1,21 @@
 <template>
-  <v-container id="about">
-    <h2 class="title text-uppercase font-weight-medium mb-3">
+  <v-container id="about" class="py-8">
+    <h2 class="display-1 mb-5">
+      <v-btn :to="{ name:'index', hash:'#about' }" icon color="primary">
+        <v-icon>
+          mdi-pound
+        </v-icon>
+      </v-btn>
       Resumen
     </h2>
 
-    <p>Desarrollador de aplicaciones web desde el año 2015, con altas capacidades de aprendizaje, trabajo en equipo y buenos métodos de comunicación, siempre aprendiendo las nuevas tecnologías y dispuesto a resolver cualquier problema. Actualmente desarrollando el frontend de aplicaciones con Vue.js.</p>
+    <div class="row">
+      <v-col>
+        <p class="mb-0">
+          Desarrollador de aplicaciones web desde el año 2015, con altas capacidades de aprendizaje, trabajo en equipo y buenos métodos de comunicación, siempre aprendiendo las nuevas tecnologías y dispuesto a resolver cualquier problema. Actualmente desarrollando el frontend de aplicaciones con Vue.js.
+        </p>
+      </v-col>
+    </div>
   </v-container>
 </template>
 

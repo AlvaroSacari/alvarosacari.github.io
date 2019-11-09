@@ -1,6 +1,11 @@
 <template>
-  <v-container id="portfolio">
-    <h2 class="title text-uppercase font-weight-medium mb-3">
+  <v-container id="portfolio" class="py-8">
+    <h2 class="display-1 mb-5">
+      <v-btn :to="{ name:'index', hash:'#portfolio' }" icon color="primary">
+        <v-icon>
+          mdi-pound
+        </v-icon>
+      </v-btn>
       Portafolio
     </h2>
 

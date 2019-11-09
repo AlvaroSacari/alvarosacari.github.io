@@ -1,6 +1,11 @@
 <template>
-  <v-container>
-    <h2 class="title text-uppercase font-weight-medium mb-3">
+  <v-container id="skills" class="py-8">
+    <h2 class="display-1 mb-5">
+      <v-btn :to="{ name:'index', hash:'#skills' }" icon color="primary">
+        <v-icon>
+          mdi-pound
+        </v-icon>
+      </v-btn>
       Habilidades
     </h2>
 
