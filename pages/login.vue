@@ -13,7 +13,7 @@
             </v-icon>
             Ingresar con Google
           </v-btn>
-          <v-btn block color="#1873eb" dark>
+          <v-btn block color="#1873eb" disabled>
             <v-icon left>
               mdi-facebook
             </v-icon>
