@@ -27,6 +27,11 @@ export const state = () => ({
       title: 'Contacto',
       icon: 'mdi-account-plus',
       to: { name: 'index', hash: '#contact' }
+    },
+    {
+      title: 'Dashboard',
+      icon: 'mdi-speedometer',
+      to: { name: 'dashboard' }
     }
   ]
 })

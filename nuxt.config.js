@@ -45,6 +45,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa'
   ],
 
@@ -55,9 +56,14 @@ export default {
   axios: {
   },
 
+  auth: {
+    //
+  },
+
   // router config
   router: {
-    base: '/'
+    base: '/',
+    middleware: ['auth']
   },
 
   /*

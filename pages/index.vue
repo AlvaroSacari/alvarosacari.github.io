@@ -18,6 +18,8 @@ import PortfolioSection from '~/components/index_sections/Portfolio.vue'
 import ContactSection from '~/components/index_sections/Contact.vue'
 
 export default {
+  auth: false,
+
   components: {
     StartSection, AboutSection, EducationSection, SkillsSection, PortfolioSection, ContactSection
   },

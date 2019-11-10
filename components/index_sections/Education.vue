@@ -19,7 +19,7 @@
           outlined
           min-height="100%"
           max-width="425px"
-          style="margin-left:auto;margin-right:auto"
+          class="mx-auto"
         >
           <v-img
             :src="item.img"
