@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-col>
-      <v-card max-width="300" class="mx-auto">
+      <v-card max-width="300" class="mx-auto" :loading="processingForm">
         <v-app-bar flat>
           <v-toolbar-title>Iniciar sesión</v-toolbar-title>
         </v-app-bar>
@@ -35,11 +35,24 @@
               label="Contraseña"
             />
           </v-form>
-          <div class="text-center">
-            <v-btn type="submit" form="loginForm" color="primary">
-              Ingresar
-            </v-btn>
-          </div>
+          <v-btn
+            type="submit"
+            class="mb-4"
+            block
+            form="loginForm"
+            color="primary"
+            :loading="processingForm"
+          >
+            Ingresar
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            block
+            :to="{ name: 'register' }"
+          >
+            Registrarme
+          </v-btn>
         </v-card-text>
       </v-card>
     </v-col>
@@ -51,12 +64,28 @@ export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      processingForm: false
     }
   },
 
   methods: {
     login () {
+      const data = {
+        email: this.email,
+        password: this.password
+      }
+
+      this.processingForm = true
+
+      this.$auth.loginWith('firebaseAuth', { data })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log('error', error)
+        })
+        .finally(() => {
+          this.processingForm = false
+        })
     }
   }
 }
