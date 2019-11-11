@@ -57,7 +57,12 @@ export default {
   },
 
   auth: {
-    //
+    strategies: {
+      firebaseAuth: {
+        _scheme: '~/app/firebaseAuthScheme.js'
+      }
+    }
+
   },
 
   // router config
