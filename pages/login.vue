@@ -21,18 +21,36 @@
           </v-btn>
         </v-card-text>
         <v-card-text>
-          <v-form id="loginForm" ref="loginForm" @submit.prevent="login">
+          <v-fade-transition>
+            <v-alert
+              v-if="loginError"
+              prominent
+              type="error"
+              border="left"
+            >
+              El usuario y/o la contraseña pueden ser incorrectos.
+            </v-alert>
+          </v-fade-transition>
+          <v-form
+            id="loginForm"
+            ref="loginForm"
+            v-model="validForm"
+            lazy-validation
+            @submit.prevent="login"
+          >
             <v-text-field
               v-model="email"
               type="email"
               outlined
               label="Correo electrónico"
+              :rules="rules.email"
             />
             <v-text-field
               v-model="password"
               type="password"
               outlined
               label="Contraseña"
+              :rules="rules.password"
             />
           </v-form>
           <v-btn
@@ -42,6 +60,7 @@
             form="loginForm"
             color="primary"
             :loading="processingForm"
+            :disabled="!validForm || processingForm"
           >
             Ingresar
           </v-btn>
@@ -65,23 +84,48 @@ export default {
     return {
       email: '',
       password: '',
-      processingForm: false
+      processingForm: false,
+      validForm: true,
+      rules: {
+        email: [
+          v => !!v || 'El correo electrónico es requerido',
+          v => /.+@.+\..+/.test(v) || 'El correo electrónico debe ser válido'
+        ],
+        password: [
+          v => !!v || 'La contraseña es requerida'
+        ]
+      },
+      loginError: false
+    }
+  },
+
+  watch: {
+    email (newValue, oldValue) {
+      if (newValue && newValue !== oldValue) {
+        this.loginError = false
+      }
+    },
+    password (newValue, oldValue) {
+      if (newValue && newValue !== oldValue) {
+        this.loginError = false
+      }
     }
   },
 
   methods: {
     login () {
+      if (!this.$refs.loginForm.validate()) { return }
+
+      this.processingForm = true
+
       const data = {
         email: this.email,
         password: this.password
       }
 
-      this.processingForm = true
-
       this.$auth.loginWith('firebaseAuth', { data })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log('error', error)
+        .catch(() => {
+          this.loginError = true
         })
         .finally(() => {
           this.processingForm = false
