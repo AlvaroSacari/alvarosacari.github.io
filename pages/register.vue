@@ -1,45 +1,13 @@
 <template>
   <v-container>
     <v-col>
-      <v-card max-width="300" class="mx-auto">
+      <v-card max-width="300" class="mx-auto" :loading="loadingCard">
         <v-app-bar flat>
           <v-toolbar-title>Registrarme</v-toolbar-title>
         </v-app-bar>
         <v-divider />
         <v-card-text>
-          <v-btn block class="mb-4" color="#e34134" dark>
-            <v-icon left>
-              mdi-google
-            </v-icon>
-            Registrarme con Google
-          </v-btn>
-          <v-btn block color="#e34134" disabled>
-            <v-icon left>
-              mdi-facebook
-            </v-icon>
-            Registrarme con Facebook
-          </v-btn>
-        </v-card-text>
-        <v-card-text>
-          <v-form id="registerForm" ref="registerForm" @submit.prevent="register">
-            <v-text-field
-              v-model="email"
-              type="email"
-              outlined
-              label="Correo electrónico"
-            />
-            <v-text-field
-              v-model="password"
-              type="password"
-              outlined
-              label="Contraseña"
-            />
-          </v-form>
-          <div class="text-center">
-            <v-btn type="submit" block form="registerForm" color="primary">
-              Registrarme
-            </v-btn>
-          </div>
+          <RegisterForm @update-processing-form="updateLoadingCard" />
         </v-card-text>
       </v-card>
     </v-col>
@@ -47,24 +15,24 @@
 </template>
 
 <script>
-import { auth } from '@/services/fireinit.js'
+import RegisterForm from '@/components/account/RegisterForm.vue'
 
 export default {
   auth: false,
 
+  components: {
+    RegisterForm
+  },
+
   data () {
     return {
-      email: '',
-      password: ''
+      loadingCard: false
     }
   },
 
   methods: {
-    register () {
-      const email = this.email
-      const password = this.password
-
-      auth.createUserWithEmailAndPassword(email, password)
+    updateLoadingCard (value) {
+      this.loadingCard = value
     }
   }
 }
