@@ -1,9 +1,9 @@
 <template>
   <v-footer
-    color="primary"
     :inset="!clipped"
-    dark
     app
+    :color="$vuetify.theme.dark ? false : 'primary'"
+    :dark="!$vuetify.theme.dark"
   >
     <span>
       © {{ year }} Desarrollado por

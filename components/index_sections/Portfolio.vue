@@ -18,7 +18,6 @@
           max-width="300px"
           class="mx-auto"
           hover
-          outlined
         >
           <v-img
             class="grey lighten-2 hoverimage"

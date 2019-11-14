@@ -1,6 +1,7 @@
 <template>
   <v-navigation-drawer
     v-model="showDrawer"
+    :floating="$vuetify.theme.dark"
     :mini-variant="miniVariant"
     :clipped="clipped"
     fixed

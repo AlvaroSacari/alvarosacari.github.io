@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
-    dark
-    color="primary"
+    :color="$vuetify.theme.dark ? false : 'primary'"
+    :dark="!$vuetify.theme.dark"
     :clipped-left="clipped"
     fixed
     app
@@ -15,6 +15,17 @@
     <v-btn icon target="_blank" :href="github">
       <v-icon>mdi-github-circle</v-icon>
     </v-btn>
+
+    <v-tooltip bottom>
+      <template v-slot:activator="{on}">
+        <v-btn icon v-on="on" @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+          <v-icon>
+            mdi-invert-colors
+          </v-icon>
+        </v-btn>
+      </template>
+      <span>{{ $vuetify.theme.dark ? 'Usar tema claro' : 'Usar tema oscuro' }}</span>
+    </v-tooltip>
   </v-app-bar>
 </template>
 

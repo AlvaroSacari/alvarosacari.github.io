@@ -16,7 +16,6 @@
       >
         <v-card
           hover
-          outlined
           min-height="100%"
           max-width="425px"
           class="mx-auto"
