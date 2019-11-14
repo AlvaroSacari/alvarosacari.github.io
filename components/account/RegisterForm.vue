@@ -27,10 +27,12 @@
       />
       <v-text-field
         v-model="password"
-        type="password"
+        :type="showPassword ? 'text': 'password'"
         outlined
         label="Contraseña"
         :rules="rules.password"
+        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showPassword = !showPassword"
       />
     </v-form>
     <div class="text-center">
@@ -68,7 +70,8 @@ export default {
           v => !!v || 'La contraseña es requerida',
           v => (v && v.length >= 6) || 'La contraseña debe tener al menos 6 caracteres'
         ]
-      }
+      },
+      showPassword: false
     }
   },
 
