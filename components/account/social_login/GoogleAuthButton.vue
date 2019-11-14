@@ -18,7 +18,10 @@ export default {
   },
   methods: {
     loginWithGoogle () {
-      auth.signInWithRedirect(GoogleProvider)
+      auth.signInWithPopup(GoogleProvider)
+        .then((response) => {
+          this.$auth.fetchUser()
+        })
         .catch((error) => {
           this.error = error
         })
