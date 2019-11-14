@@ -9,12 +9,19 @@
     <v-app-bar-nav-icon @click="toggleNavigationDrawer" />
     <v-toolbar-title>{{ title }}</v-toolbar-title>
     <v-spacer />
-    <v-btn icon target="_blank" :href="linkedIn">
-      <v-icon>mdi-linkedin-box</v-icon>
-    </v-btn>
-    <v-btn icon target="_blank" :href="github">
-      <v-icon>mdi-github-circle</v-icon>
-    </v-btn>
+    <div style="width:128px">
+      <v-select
+        hide-details
+        label=""
+        placeholder="Idioma"
+        outlined
+        dense
+        :items="['Español', 'English']"
+        :menu-props="{
+          offsetY:true
+        }"
+      />
+    </div>
 
     <v-tooltip bottom>
       <template v-slot:activator="{on}">
