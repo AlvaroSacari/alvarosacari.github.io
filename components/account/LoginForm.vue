@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GoogleAuthButton class="mb-4" />
+    <GoogleAuthButton class="mb-4" @update-google-logging-in="updateProcessingForm" />
     <v-btn block class="mb-4" color="#1873eb" disabled>
       <v-icon left>
         mdi-facebook
@@ -105,15 +105,22 @@ export default {
       if (newValue && newValue !== oldValue) {
         this.formError = false
       }
+    },
+
+    processingForm (newValue, oldValue) {
+      this.$emit('update-processing-form', newValue)
     }
   },
 
   methods: {
+    updateProcessingForm (value) {
+      this.processingForm = value
+    },
+
     login () {
       if (!this.$refs.loginForm.validate()) { return }
 
       this.processingForm = true
-      this.$emit('update-processing-form', true)
 
       const data = {
         email: this.email,
@@ -129,7 +136,6 @@ export default {
         })
         .finally(() => {
           this.processingForm = false
-          this.$emit('update-processing-form', false)
         })
     }
   }

@@ -1,5 +1,12 @@
 <template>
-  <v-btn block color="#e34134" dark @click="loginWithGoogle">
+  <v-btn
+    :loading="logging"
+    :disabled="logging"
+    block
+    color="#e34134"
+    dark
+    @click="loginWithGoogle"
+  >
     <v-icon left>
       mdi-google
     </v-icon>
@@ -13,17 +20,30 @@ import { auth, GoogleProvider } from '@/services/fireinit.js'
 export default {
   data () {
     return {
+      logging: false,
       error: null
     }
   },
+
+  watch: {
+    logging (newValue, oldValue) {
+      this.$emit('update-google-logging-in', newValue)
+    }
+  },
+
   methods: {
     loginWithGoogle () {
+      this.logging = true
+
       auth.signInWithPopup(GoogleProvider)
         .then((response) => {
           this.$auth.fetchUser()
         })
         .catch((error) => {
           this.error = error
+        })
+        .finally(() => {
+          this.logging = false
         })
     }
   }
