@@ -1,6 +1,6 @@
 <template>
   <v-app-bar
-    :color="$vuetify.theme.dark ? false : 'primary'"
+    :color="$vuetify.theme.dark ? 'grey darken-3' : 'primary'"
     :dark="!$vuetify.theme.dark"
     :clipped-left="clipped"
     fixed

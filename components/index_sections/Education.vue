@@ -25,7 +25,7 @@
             height="200px"
           />
 
-          <v-card-title>
+          <v-card-title class="break-word">
             {{ item.title }}
           </v-card-title>
 

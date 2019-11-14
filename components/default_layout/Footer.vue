@@ -2,7 +2,7 @@
   <v-footer
     :inset="!clipped"
     app
-    :color="$vuetify.theme.dark ? false : 'primary'"
+    :color="$vuetify.theme.dark ? 'grey darken-3' : 'primary'"
     :dark="!$vuetify.theme.dark"
   >
     <span>
