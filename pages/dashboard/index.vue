@@ -1,18 +1,12 @@
 <template>
-  <div>
+  <v-container>
     <h1>Dashboard</h1>
-    <v-btn @click="logout">
-      logout
-    </v-btn>
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   methods: {
-    logout () {
-      this.$auth.logout()
-    }
   }
 }
 </script>
