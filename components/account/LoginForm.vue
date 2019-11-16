@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import GoogleAuthButton from '@/components/account/social_login/GoogleAuthButton.vue'
+import GoogleAuthButton from '~/components/account/social_login/GoogleAuthButton.vue'
 
 export default {
   components: {

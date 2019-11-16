@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import RegisterForm from '@/components/account/RegisterForm.vue'
+import RegisterForm from '~/components/account/RegisterForm.vue'
 
 export default {
   auth: false,

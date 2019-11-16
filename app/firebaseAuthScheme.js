@@ -1,4 +1,4 @@
-import { auth } from '@/services/fireinit.js'
+import { auth } from '~/services/firebaseInit.js'
 
 export default class FirebaseAuthScheme {
   constructor (auth, options) {

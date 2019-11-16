@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { auth, GoogleAuthProvider } from '@/services/fireinit.js'
+import { auth, GoogleAuthProvider } from '~/services/firebaseInit.js'
 
 export default {
   data () {
