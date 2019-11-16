@@ -1,5 +1,5 @@
 <template>
-  <v-list dense>
+  <v-list dense nav>
     <template v-for="(item,i) in items">
       <template v-if="!item.items">
         <v-list-item
@@ -8,9 +8,9 @@
           exact
           color="primary"
         >
-          <v-list-item-action>
+          <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+          </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
