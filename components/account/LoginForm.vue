@@ -128,9 +128,6 @@ export default {
       }
 
       this.$auth.loginWith('firebaseAuth', { data })
-        .then((response) => {
-          this.$router.push({ name: 'dashboard' })
-        })
         .catch(() => {
           this.formError = true
         })

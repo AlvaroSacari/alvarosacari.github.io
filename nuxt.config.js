@@ -63,8 +63,13 @@ export default {
       firebaseAuth: {
         _scheme: '~/app/firebaseAuthScheme.js'
       }
+    },
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/dashboard'
     }
-
   },
 
   // router config
