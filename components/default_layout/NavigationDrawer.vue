@@ -8,14 +8,14 @@
     app
   >
     <NavigationDrawerImageTop />
-    <NavigationDrawerList :items="items" />
+    <NavigationDrawerList />
   </v-navigation-drawer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import NavigationDrawerImageTop from '~/components/core/NavigationDrawerImageTop.vue'
-import NavigationDrawerList from '~/components/core/NavigationDrawerList.vue'
+import NavigationDrawerImageTop from '~/components/navigation_drawer/NavigationDrawerImageTop.vue'
+import NavigationDrawerList from '~/components/navigation_drawer/NavigationDrawerList.vue'
 
 export default {
   components: {
@@ -34,7 +34,6 @@ export default {
 
   computed: {
     ...mapState({
-      items: state => state.navigationDrawer.items,
       clipped: state => state.navigationDrawer.clipped,
       miniVariant: state => state.navigationDrawer.miniVariant
     }),

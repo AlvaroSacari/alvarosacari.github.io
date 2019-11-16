@@ -27,7 +27,9 @@ export const state = () => ({
       title: 'Contacto',
       icon: 'mdi-account-plus',
       to: { name: 'index', hash: '#contact' }
-    },
+    }
+  ],
+  items2: [
     {
       title: 'Dashboard',
       icon: 'mdi-speedometer',
@@ -35,6 +37,20 @@ export const state = () => ({
     }
   ]
 })
+
+export const getters = {
+  items2: (state, getters, rootState, rootGetters) => {
+    if (!rootState.auth.loggedIn) {
+      return state.items2
+    }
+
+    return [...state.items2, {
+      title: 'Educación',
+      icon: 'mdi-laptop',
+      to: { name: 'education-places' }
+    }]
+  }
+}
 
 export const actions = {
   toggleNavigationDrawer ({ commit }) {
