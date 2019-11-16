@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { auth, GoogleProvider } from '@/services/fireinit.js'
+import { auth, GoogleAuthProvider } from '@/services/fireinit.js'
 
 export default {
   data () {
@@ -35,7 +35,7 @@ export default {
     loginWithGoogle () {
       this.logging = true
 
-      auth.signInWithPopup(GoogleProvider)
+      auth.signInWithPopup(GoogleAuthProvider)
         .then((response) => {
           this.$auth.fetchUser()
         })
