@@ -12,7 +12,6 @@
     <div style="width:128px">
       <v-select
         hide-details
-        label=""
         placeholder="Idioma"
         outlined
         dense
