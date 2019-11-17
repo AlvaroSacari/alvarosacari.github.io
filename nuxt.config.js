@@ -1,4 +1,6 @@
 import colors from 'vuetify/lib/util/colors'
+import en from 'vuetify/lib/locale/en'
+import es from 'vuetify/lib/locale/es'
 
 export default {
   mode: 'spa',
@@ -107,6 +109,10 @@ export default {
           error: colors.red
         }
       }
+    },
+    lang: {
+      locales: { es, en },
+      current: 'es'
     }
   },
   /*
