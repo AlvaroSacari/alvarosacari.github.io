@@ -26,8 +26,8 @@
     "@nuxtjs/auth": "^4.8.4",
     "@nuxtjs/axios": "^5.8.0",
     "@nuxtjs/pwa": "^3.0.0-beta.19",
-    "firebase": "^7.3.0",
-    "nuxt": "^2.10.0",
+    "firebase": "^7.4.0",
+    "nuxt": "^2.10.2",
     "vuefire": "^2.2.0",
     "vuexfire": "^3.2.0"
   },
@@ -38,11 +38,11 @@
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
-    "eslint": "^6.5.1",
-    "eslint-plugin-nuxt": ">=0.4.3",
-    "husky": "^3.0.8",
+    "eslint": "^6.6.0",
+    "eslint-plugin-nuxt": ">=0.5.0",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
-    "lint-staged": "^9.4.2",
+    "lint-staged": "^9.4.3",
     "vue-jest": "^3.0.5"
   }
 }
