@@ -1,7 +1,7 @@
 <template>
   <v-container id="education" ref="section-education" class="py-8">
     <h2 class="display-1 mb-5">
-      <v-btn :to="{ name:'index', hash:'#education' }" icon color="primary">
+      <v-btn @click="$vuetify.goTo('#education')" icon color="primary">
         <v-icon>
           mdi-pound
         </v-icon>
