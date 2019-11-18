@@ -5,8 +5,8 @@
       <v-spacer />
       <v-btn
         v-if="filters.length"
-        icon
         @click="showFilters = !showFilters"
+        icon
       >
         <v-icon>{{ showFilters ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
       </v-btn>
@@ -20,10 +20,10 @@
             v-for="(item, i) in filters"
             :key="i"
             v-model="filterSelected"
-            class="ma-0"
-            hide-details
             :label="item.label"
             :value="item.slug"
+            class="ma-0"
+            hide-details
           />
         </v-card-text>
       </div>

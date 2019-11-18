@@ -1,12 +1,12 @@
 <template>
   <v-img :aspect-ratio="16/9" :src="backgroundImg">
     <v-row
-      align="end"
-      class="fill-height"
       :class="{
         lightbox: $auth.loggedIn,
         'lightbox-dark': !$auth.loggedIn,
       }"
+      align="end"
+      class="fill-height"
     >
       <v-col class="pb-0">
         <v-list dark class="pa-0" dense>
@@ -29,7 +29,7 @@
             <v-list-item-action v-if="$auth.loggedIn">
               <v-tooltip bottom>
                 <template v-slot:activator="{on}">
-                  <v-btn icon v-on="on" @click="$auth.logout()">
+                  <v-btn v-on="on" @click="$auth.logout()" icon>
                     <v-icon>mdi-logout-variant</v-icon>
                   </v-btn>
                 </template>

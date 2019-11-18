@@ -1,15 +1,15 @@
 <template>
   <v-footer
     :inset="!clipped"
-    app
     :color="$vuetify.theme.dark ? 'grey darken-3' : 'primary'"
     :dark="!$vuetify.theme.dark"
+    app
   >
     <span>
       © {{ year }} Desarrollado por
       <a
-        class="white--text"
         :href="linkedIn"
+        class="white--text"
         target="_blank"
       >{{ name }}</a>
     </span>

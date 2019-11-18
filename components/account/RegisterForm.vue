@@ -15,31 +15,31 @@
       id="registerForm"
       ref="registerForm"
       v-model="validForm"
-      lazy-validation
       @submit.prevent="register"
+      lazy-validation
     >
       <v-text-field
         v-model="email"
+        :rules="rules.email"
         type="email"
         outlined
         label="Correo electrónico"
-        :rules="rules.email"
       />
       <v-text-field
         v-model="password"
         :type="showPassword ? 'text': 'password'"
-        outlined
-        label="Contraseña"
         :rules="rules.password"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPassword = !showPassword"
+        outlined
+        label="Contraseña"
       />
     </v-form>
     <div class="text-center">
       <v-btn
-        type="submit"
         :loading="processingForm"
         :disabled="!validForm || processingForm"
+        type="submit"
         block
         form="registerForm"
         color="primary"

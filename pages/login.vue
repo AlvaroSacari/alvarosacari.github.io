@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-col>
-      <v-card max-width="300" class="mx-auto" :loading="loadingCard">
+      <v-card :loading="loadingCard" max-width="300" class="mx-auto">
         <v-app-bar flat>
           <v-toolbar-title>Iniciar sesión</v-toolbar-title>
         </v-app-bar>

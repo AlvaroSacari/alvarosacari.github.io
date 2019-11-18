@@ -20,10 +20,10 @@
           hover
         >
           <v-img
-            class="grey lighten-2 hoverimage"
-            position="top center"
             :src="item.img"
             :lazy-src="item.img"
+            class="grey lighten-2 hoverimage"
+            position="top center"
             height="200px"
           >
             <template v-slot:placeholder>
@@ -50,13 +50,13 @@
             <v-tooltip bottom>
               <template v-slot:activator="{ on }">
                 <v-btn
-                  icon
                   :disabled="!item.codeUrl"
+                  :href="item.codeUrl"
+                  v-on="on"
+                  icon
                   text
                   color="primary"
                   target="_blank"
-                  :href="item.codeUrl"
-                  v-on="on"
                 >
                   <v-icon>
                     mdi-code-tags
@@ -68,13 +68,13 @@
             <v-tooltip bottom>
               <template v-slot:activator="{on}">
                 <v-btn
-                  icon
                   :disabled="!item.pageUrl"
+                  :href="item.pageUrl"
+                  v-on="on"
+                  icon
                   text
                   color="primary"
                   target="_blank"
-                  :href="item.pageUrl"
-                  v-on="on"
                 >
                   <v-icon>
                     mdi-open-in-new

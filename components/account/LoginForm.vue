@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GoogleAuthButton class="mb-4" @update-google-logging-in="updateProcessingForm" />
+    <GoogleAuthButton @update-google-logging-in="updateProcessingForm" class="mb-4" />
     <v-btn block class="mb-4" color="#1873eb" disabled>
       <v-icon left>
         mdi-facebook
@@ -23,43 +23,43 @@
       id="loginForm"
       ref="loginForm"
       v-model="validForm"
-      lazy-validation
       @submit.prevent="login"
+      lazy-validation
     >
       <v-text-field
         v-model="email"
+        :rules="rules.email"
         type="email"
         outlined
         label="Correo electrónico"
-        :rules="rules.email"
       />
       <v-text-field
         v-model="password"
         :type="showPassword ? 'text': 'password'"
-        outlined
-        label="Contraseña"
         :rules="rules.password"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPassword = !showPassword"
+        outlined
+        label="Contraseña"
       />
     </v-form>
 
     <v-btn
+      :loading="processingForm"
+      :disabled="!validForm || processingForm"
       type="submit"
       class="mb-4"
       block
       form="loginForm"
       color="primary"
-      :loading="processingForm"
-      :disabled="!validForm || processingForm"
     >
       Ingresar
     </v-btn>
     <v-btn
+      :to="{ name: 'register' }"
       text
       color="primary"
       block
-      :to="{ name: 'register' }"
     >
       Registrarme
     </v-btn>

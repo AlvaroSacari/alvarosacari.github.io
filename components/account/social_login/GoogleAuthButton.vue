@@ -2,10 +2,10 @@
   <v-btn
     :loading="logging"
     :disabled="logging"
+    @click="loginWithGoogle"
     block
     color="#e34134"
     dark
-    @click="loginWithGoogle"
   >
     <v-icon left>
       mdi-google

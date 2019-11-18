@@ -24,9 +24,9 @@
       <template v-else>
         <v-list-group
           :key="`subGroup${j}`"
+          :value="subItem.expand"
           no-action
           sub-group
-          :value="subItem.expand"
         >
           <template v-slot:activator>
             <v-list-item-content>

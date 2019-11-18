@@ -11,7 +11,7 @@
 
     <div class="row">
       <v-col>
-        <v-btn color="primary" text class="text-lowercase" :href="`mailto:${email}?subject=Contacto`">
+        <v-btn :href="`mailto:${email}?subject=Contacto`" color="primary" text class="text-lowercase">
           <v-icon left>
             mdi-email-outline
           </v-icon>
@@ -26,14 +26,14 @@
         </v-btn>
       </v-col>
       <v-col>
-        <v-btn color="primary" text class="text-capitalize" target="_blank" :href="linkedIn">
+        <v-btn :href="linkedIn" color="primary" text class="text-capitalize" target="_blank">
           <v-icon left>
             mdi-linkedin-box
           </v-icon>
           LinkedIn
         </v-btn>
         <br>
-        <v-btn color="primary" text class="text-capitalize" target="_blank" :href="facebook">
+        <v-btn :href="facebook" color="primary" text class="text-capitalize" target="_blank">
           <v-icon left>
             mdi-facebook-box
           </v-icon>
@@ -41,14 +41,14 @@
         </v-btn>
       </v-col>
       <v-col>
-        <v-btn color="primary" text class="text-capitalize" target="_blank" :href="github">
+        <v-btn :href="github" color="primary" text class="text-capitalize" target="_blank">
           <v-icon left>
             mdi-github-circle
           </v-icon>
           Github
         </v-btn>
         <br>
-        <v-btn color="primary" text class="text-capitalize" target="_blank" :href="gitlab">
+        <v-btn :href="gitlab" color="primary" text class="text-capitalize" target="_blank">
           <v-icon left>
             mdi-gitlab
           </v-icon>

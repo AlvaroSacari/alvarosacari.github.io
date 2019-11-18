@@ -12,23 +12,23 @@
     <v-row>
       <v-col cols="12" sm="4">
         <SkillsCard
-          title="Frontend"
           :skills="frontendSkills"
           :filters="frontendFilters"
+          title="Frontend"
         />
       </v-col>
       <v-col cols="12" sm="4">
         <SkillsCard
-          title="Backend"
           :skills="backendSkills"
           :filters="backendFilters"
+          title="Backend"
         />
       </v-col>
       <v-col cols="12" sm="4">
         <SkillsCard
-          title="Otros"
           :skills="otherSkills"
           :filters="otherFilters"
+          title="Otros"
         />
       </v-col>
     </v-row>

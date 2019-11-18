@@ -11,20 +11,20 @@
     <v-spacer />
     <div style="width:128px">
       <v-select
-        hide-details
-        placeholder="Idioma"
-        outlined
-        dense
         :items="['Español', 'English']"
         :menu-props="{
           offsetY:true
         }"
+        hide-details
+        placeholder="Idioma"
+        outlined
+        dense
       />
     </div>
 
     <v-tooltip bottom>
       <template v-slot:activator="{on}">
-        <v-btn icon v-on="on" @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+        <v-btn v-on="on" @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon>
           <v-icon>
             mdi-invert-colors
           </v-icon>
