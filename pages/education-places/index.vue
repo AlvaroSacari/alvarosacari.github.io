@@ -25,7 +25,23 @@
       <v-data-table
         :headers="headers"
         :items="educationPlaces"
-      />
+        :loading="loadingData"
+      >
+        <template v-slot:item.action="{ item }">
+          <div class="mx-n3">
+            <v-btn @click="editItem(item)" icon>
+              <v-icon>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>
+                mdi-delete
+              </v-icon>
+            </v-btn>
+          </div>
+        </template>
+      </v-data-table>
     </v-card>
   </v-container>
 </template>
@@ -54,8 +70,10 @@ export default {
       headers: [
         { text: 'Lugar', value: 'place' },
         { text: 'Grado', value: 'degree' },
-        { text: 'Detalle', value: 'detail' }
-      ]
+        { text: 'Detalle', value: 'detail' },
+        { text: '', value: 'action', sortable: false, width: 85 }
+      ],
+      loadingData: false
     }
   },
 
@@ -66,13 +84,22 @@ export default {
   },
 
   created () {
-    this.bindEducationPlaces()
+    this.loadingData = true
+    this.bindEducationPlaces().finally(() => {
+      this.loadingData = false
+    })
   },
 
   methods: {
     ...mapActions({
       bindEducationPlaces: 'educationPlaces/bindEducationPlaces'
-    })
+    }),
+
+    editItem (item) {},
+
+    test () {
+      console.log('mouse enter')
+    }
   }
 }
 </script>
