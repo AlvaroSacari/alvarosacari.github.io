@@ -95,11 +95,8 @@ export default {
       bindEducationPlaces: 'educationPlaces/bindEducationPlaces'
     }),
 
-    editItem (item) {},
+    editItem (item) {}
 
-    test () {
-      console.log('mouse enter')
-    }
   }
 }
 </script>
