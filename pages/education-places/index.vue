@@ -2,18 +2,25 @@
   <v-container>
     <Breadcrumbs :items="breadcrumbs" />
 
-    <h2 class="display-1 mb-5">
+    <h2 id="education-places" class="py-4">
+      <v-btn @click="$vuetify.goTo('#education-places')" icon color="primary">
+        <v-icon>
+          mdi-pound
+        </v-icon>
+      </v-btn>
       Educación
     </h2>
 
     <v-card>
       <v-app-bar flat>
         <v-text-field
+          v-model="search"
           dense
           outlined
           placeholder="Buscar"
           hide-details
           prepend-inner-icon="mdi-magnify"
+          clearable
         />
         <v-btn color="primary" class="mx-2 text-capitalize">
           Agregar
@@ -26,19 +33,30 @@
         :headers="headers"
         :items="educationPlaces"
         :loading="loadingData"
+        :search="search"
       >
         <template v-slot:item.action="{ item }">
           <div class="mx-n3">
-            <v-btn @click="editItem(item)" icon>
-              <v-icon>
-                mdi-pencil
-              </v-icon>
-            </v-btn>
-            <v-btn icon>
-              <v-icon>
-                mdi-delete
-              </v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="editItem(item)" color="info" icon>
+                  <v-icon>
+                    mdi-pencil
+                  </v-icon>
+                </v-btn>
+              </template>
+              <span>Editar</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" @click="editItem(item)" color="error" icon>
+                  <v-icon>
+                    mdi-delete
+                  </v-icon>
+                </v-btn>
+              </template>
+              <span>Eliminar</span>
+            </v-tooltip>
           </div>
         </template>
       </v-data-table>
@@ -73,7 +91,8 @@ export default {
         { text: 'Detalle', value: 'detail' },
         { text: '', value: 'action', sortable: false, width: 85 }
       ],
-      loadingData: false
+      loadingData: false,
+      search: ''
     }
   },
 
