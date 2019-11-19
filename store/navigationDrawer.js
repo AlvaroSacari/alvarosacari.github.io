@@ -28,7 +28,7 @@ export const state = () => ({
     {
       title: 'Dashboard',
       icon: 'mdi-speedometer',
-      to: { name: 'dashboard' }
+      to: { name: 'admin-dashboard' }
     }
   ]
 })
@@ -42,7 +42,7 @@ export const getters = {
     return [...state.items2, {
       title: 'Educación',
       icon: 'mdi-laptop',
-      to: { name: 'education-places' }
+      to: { name: 'admin-education-places' }
     }]
   }
 }

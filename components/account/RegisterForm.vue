@@ -120,7 +120,7 @@ export default {
 
       this.$auth.loginWith('firebaseAuth', { data })
         .then((response) => {
-          this.$router.push({ name: 'dashboard' })
+          this.$router.push({ name: 'admin-dashboard' })
         })
         .catch((error) => {
           this.formError = error

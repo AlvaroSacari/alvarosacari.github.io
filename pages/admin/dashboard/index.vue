@@ -40,7 +40,7 @@ export default {
       breadcrumbs: [
         {
           text: 'Dashboard',
-          to: { name: 'dashboard' }
+          to: { name: 'admin-dashboard' }
         }
       ],
       modules: [
@@ -48,7 +48,7 @@ export default {
           title: 'Educación',
           subtitle: 'Crear, editar o eliminar lugares de estudio',
           icon: 'mdi-laptop',
-          to: { name: 'education-places' },
+          to: { name: 'admin-education-places' },
           disabled: false
         },
         {

@@ -70,7 +70,7 @@ export default {
       login: '/login',
       logout: '/',
       callback: '/login',
-      home: '/dashboard'
+      home: '/admin/dashboard'
     }
   },
 

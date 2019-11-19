@@ -114,11 +114,11 @@ export default {
       breadcrumbs: [
         {
           text: 'Dashboard',
-          to: { name: 'dashboard' }
+          to: { name: 'admin-dashboard' }
         },
         {
           text: 'Educación',
-          to: { name: 'education-places' }
+          to: { name: 'admin-education-places' }
         }
       ],
       headers: [
