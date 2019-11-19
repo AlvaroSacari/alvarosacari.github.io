@@ -1,6 +1,6 @@
 <template>
-  <v-container id="portfolio" class="py-8">
-    <h2 class="display-1 mb-5">
+  <v-container id="portfolio" class="pa-4">
+    <h2 class="display-1 my-4">
       <v-btn @click="$vuetify.goTo('#portfolio')" icon color="primary">
         <v-icon>
           mdi-pound

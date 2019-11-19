@@ -1,6 +1,6 @@
 <template>
-  <v-container id="skills" class="py-8">
-    <h2 class="display-1 mb-5">
+  <v-container id="skills" class="pa-4">
+    <h2 class="display-1 my-4">
       <v-btn @click="$vuetify.goTo('#skills')" icon color="primary">
         <v-icon>
           mdi-pound

@@ -1,9 +1,15 @@
 <template>
-  <v-container>
+  <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
-    <h1 class="display-1 mb-5">
+
+    <h2 class="py-4">
+      <v-btn icon color="primary">
+        <v-icon>
+          mdi-pound
+        </v-icon>
+      </v-btn>
       Dashboard
-    </h1>
+    </h2>
   </v-container>
 </template>
 

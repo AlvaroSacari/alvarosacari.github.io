@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pa-4">
     <v-col>
       <v-card :loading="loadingCard" max-width="300" class="mx-auto">
         <v-app-bar flat>

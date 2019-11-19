@@ -1,6 +1,6 @@
 <template>
-  <v-container id="education" ref="section-education" class="py-8">
-    <h2 class="display-1 mb-5">
+  <v-container id="education" class="pa-4">
+    <h2 class="display-1 my-4">
       <v-btn @click="$vuetify.goTo('#education')" icon color="primary">
         <v-icon>
           mdi-pound
@@ -17,7 +17,7 @@
         <v-card
           hover
           min-height="100%"
-          max-width="425px"
+          max-width="430px"
           class="mx-auto"
         >
           <v-img
