@@ -93,7 +93,7 @@ export default {
         light: {
           primary: colors.blue,
           accent: colors.amber,
-          secondary: colors.blue.lighten2,
+          secondary: colors.blue.darken1,
           success: colors.green,
           info: colors.lightBlue,
           warning: colors.amber,
@@ -102,7 +102,7 @@ export default {
         dark: {
           primary: colors.blue,
           accent: colors.amber,
-          secondary: colors.blue.lighten2,
+          secondary: colors.blue.lighten1,
           success: colors.green,
           info: colors.lightBlue,
           warning: colors.amber,

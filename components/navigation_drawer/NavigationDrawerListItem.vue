@@ -2,7 +2,7 @@
   <v-list-item
     :to="item.to ? item.to : null"
     exact
-    color="primary"
+    color="secondary"
   >
     <v-list-item-icon>
       <v-icon>{{ item.icon }}</v-icon>
