@@ -7,7 +7,7 @@
     app
   >
     <v-app-bar-nav-icon @click="toggleNavigationDrawer" />
-    <v-toolbar-title>{{ title }}</v-toolbar-title>
+    <v-toolbar-title>{{ '' }}</v-toolbar-title>
     <v-spacer />
     <div style="width:128px">
       <v-select
