@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
 
     <div id="education-places-table">
@@ -23,18 +23,20 @@
             prepend-inner-icon="mdi-magnify"
             clearable
           />
-          <v-btn color="primary" class="mx-2 text-capitalize">
+          <v-btn @click="dialog=true" color="primary" class="mx-2 text-capitalize">
             Agregar
           </v-btn>
           <v-btn height="40" width="40" icon>
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </v-app-bar>
+
         <v-data-table
           :headers="headers"
           :items="educationPlaces"
           :loading="loadingData"
           :search="search"
+          calculate-widths
         >
           <template v-slot:item.action="{ item }">
             <div class="mx-n3">
@@ -63,6 +65,38 @@
         </v-data-table>
       </v-card>
     </div>
+
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-card>
+        <v-app-bar color="primary" dark flat>
+          <v-toolbar-title>Nuevo estudio</v-toolbar-title>
+        </v-app-bar>
+
+        <v-card-text class="pa-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+
+        <v-card-actions class="pa-4">
+          <v-spacer />
+          <v-btn
+            @click="dialog = false"
+            class="text-capitalize"
+            text
+          >
+            Cancelar
+          </v-btn>
+          <v-btn
+            class="text-capitalize"
+            color="primary"
+          >
+            Guardar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -94,7 +128,8 @@ export default {
         { text: '', value: 'action', sortable: false, width: 85 }
       ],
       loadingData: false,
-      search: ''
+      search: '',
+      dialog: false
     }
   },
 
