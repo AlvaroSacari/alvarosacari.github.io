@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-list v-if="items.length" dense nav>
+      <v-subheader>Sobre mí</v-subheader>
       <template v-for="(item,i) in items">
         <NavigationDrawerListItem
           v-if="!item.items"
@@ -16,6 +17,7 @@
     </v-list>
     <v-divider />
     <v-list v-if="items2.length" dense nav>
+      <v-subheader>Admin</v-subheader>
       <template v-for="(item,i) in items2">
         <NavigationDrawerListItem
           v-if="!item.items"

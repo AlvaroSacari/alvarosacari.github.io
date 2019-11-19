@@ -14,19 +14,14 @@ export const state = () => ({
       to: { name: 'index' }
     },
     {
-      title: 'Acerca de',
-      icon: 'mdi-account',
-      to: { name: 'index', hash: '#about' }
-    },
-    {
       title: 'Portafolio',
       icon: 'mdi-rocket',
-      to: { name: 'index', hash: '#portfolio' }
+      to: { name: 'portfolio' }
     },
     {
       title: 'Contacto',
       icon: 'mdi-account-plus',
-      to: { name: 'index', hash: '#contact' }
+      to: { name: 'contact' }
     }
   ],
   items2: [
