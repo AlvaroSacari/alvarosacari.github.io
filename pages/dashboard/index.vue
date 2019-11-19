@@ -57,6 +57,13 @@ export default {
           icon: 'mdi-code-tags',
           to: { name: 'skills' },
           disabled: true
+        },
+        {
+          title: 'Portafolio',
+          subtitle: 'Crear, editar o eliminar proyectos del protafolio',
+          icon: 'mdi-rocket',
+          to: { name: 'portfolio' },
+          disabled: true
         }
       ]
     }
