@@ -3,7 +3,7 @@
     v-model="showModal"
     width="500"
   >
-    <v-card>
+    <v-card :loading="processingForm">
       <v-app-bar color="primary" dark flat>
         <v-toolbar-title>Nuevo estudio</v-toolbar-title>
       </v-app-bar>
@@ -12,7 +12,9 @@
         <v-form
           id="createEducationPlaceForm"
           ref="createEducationPlaceForm"
+          v-model="validForm"
           @submit.prevent="create"
+          lazy-validation
         >
           <v-text-field v-model="form.place" :rules="rules.place" outlined label="Lugar" />
           <v-text-field v-model="form.degree" outlined label="Grado" />
@@ -30,6 +32,8 @@
           Cancelar
         </v-btn>
         <v-btn
+          :disabled="!validForm || processingForm"
+          :loading="processingForm"
           type="submit"
           form="createEducationPlaceForm"
           class="text-capitalize"
@@ -66,6 +70,8 @@ export default {
           v => !!v || 'El lugar es requerido'
         ]
       },
+      validForm: true,
+      processingForm: false,
       error: null
     }
   },
@@ -97,6 +103,7 @@ export default {
     create () {
       if (!this.$refs.createEducationPlaceForm.validate()) { return false }
 
+      this.processingForm = true
       const data = this.form
 
       this.addItem({ data })
@@ -105,6 +112,9 @@ export default {
         })
         .catch((error) => {
           this.error = error
+        })
+        .finally(() => {
+          this.processingForm = false
         })
     }
   }
