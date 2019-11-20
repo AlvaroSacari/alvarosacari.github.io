@@ -1,4 +1,4 @@
-import { auth } from '~/services/firebaseInit.js'
+import { auth, GoogleAuthProvider } from '~/services/firebaseInit.js'
 
 export default class FirebaseAuthScheme {
   constructor (auth, options) {
@@ -19,6 +19,13 @@ export default class FirebaseAuthScheme {
     const password = endpoint.data.password
 
     await auth.signInWithEmailAndPassword(email, password)
+
+    return this.fetchUser()
+  }
+
+  async loginWithGoogle () {
+    await this._logoutLocally()
+    await auth.signInWithPopup(GoogleAuthProvider)
 
     return this.fetchUser()
   }

@@ -62,6 +62,7 @@ export default {
 
   auth: {
     strategies: {
+      local: false,
       firebaseAuth: {
         _scheme: '~/app/firebaseAuthScheme.js'
       }

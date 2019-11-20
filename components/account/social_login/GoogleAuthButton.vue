@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { auth, GoogleAuthProvider } from '~/services/firebaseInit.js'
-
 export default {
   data () {
     return {
@@ -35,10 +33,7 @@ export default {
     loginWithGoogle () {
       this.logging = true
 
-      auth.signInWithPopup(GoogleAuthProvider)
-        .then((response) => {
-          this.$auth.fetchUser()
-        })
+      this.$auth.strategies.firebaseAuth.loginWithGoogle()
         .catch((error) => {
           this.error = error
         })
