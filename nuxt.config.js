@@ -33,7 +33,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vuefire.js'
+    '~/plugins/vuefire.js',
+    '~/plugins/snackbar.js'
   ],
   /*
   ** Nuxt.js dev-modules
