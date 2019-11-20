@@ -2,26 +2,28 @@
   <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
 
-    <h2 class="py-4">
-      <v-btn icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Dashboard
-    </h2>
+    <div id="dashboard">
+      <h2 class="py-4">
+        <v-btn @click="$vuetify.goTo('#dashboard')" icon color="primary">
+          <v-icon>
+            mdi-pound
+          </v-icon>
+        </v-btn>
+        Dashboard
+      </h2>
 
-    <v-row v-if="modules.length">
-      <v-col v-for="(item,i) in modules" :key="i">
-        <ModuleCard
-          :title="item.title"
-          :subtitle="item.subtitle"
-          :icon="item.icon"
-          :to="item.to"
-          :disabled="item.disabled"
-        />
-      </v-col>
-    </v-row>
+      <v-row v-if="modules.length">
+        <v-col v-for="(item,i) in modules" :key="i">
+          <ModuleCard
+            :title="item.title"
+            :subtitle="item.subtitle"
+            :icon="item.icon"
+            :to="item.to"
+            :disabled="item.disabled"
+          />
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -55,14 +57,12 @@ export default {
           title: 'Hablilidades',
           subtitle: 'Crear, editar o eliminar habilidades',
           icon: 'mdi-code-tags',
-          to: { name: 'skills' },
           disabled: true
         },
         {
           title: 'Portafolio',
           subtitle: 'Crear, editar o eliminar proyectos del protafolio',
           icon: 'mdi-rocket',
-          to: { name: 'portfolio' },
           disabled: true
         }
       ]

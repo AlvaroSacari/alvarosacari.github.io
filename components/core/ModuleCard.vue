@@ -1,33 +1,35 @@
 <template>
   <v-card
     :disabled="disabled"
-    :to="to"
     class="mx-auto"
-    max-width="360"
     hover
   >
-    <v-card-text class="pa-4">
-      <v-list-item three-line class="px-0">
+    <v-card-text class="px-0">
+      <v-list-item :to="to" two-line>
         <v-list-item-icon class="my-auto">
-          <v-icon size="64">
+          <v-icon large>
             {{ icon }}
           </v-icon>
         </v-list-item-icon>
-        <v-list-item-content class="py-0">
-          <v-list-item-subtitle>Módulo</v-list-item-subtitle>
-          <v-list-item-title class="headline">
-            {{ title }}
-          </v-list-item-title>
+        <v-list-item-content>
+          <v-list-item-title>{{ title }}</v-list-item-title>
           <v-list-item-subtitle>{{ subtitle }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-card-text>
     <v-divider />
-    <v-card-actions class="pa-4">
+    <v-card-actions>
+      <v-spacer />
       <v-btn
+        :to="to"
+        text
+        class="text-capitalize"
         color="primary"
       >
-        Ir
+        Ver
+        <v-icon right>
+          mdi-arrow-right
+        </v-icon>
       </v-btn>
     </v-card-actions>
   </v-card>
