@@ -1,39 +1,31 @@
 <template>
   <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
+    <sectionTitle id="dashboard-title" title="Dashboard" />
 
-    <div id="dashboard" class="pt-3">
-      <h2 class="my-2">
-        <v-btn @click="$vuetify.goTo('#dashboard')" icon color="primary">
-          <v-icon>
-            mdi-pound
-          </v-icon>
-        </v-btn>
-        Dashboard
-      </h2>
-
-      <v-row v-if="modules.length">
-        <v-col v-for="(item,i) in modules" :key="i">
-          <ModuleCard
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :icon="item.icon"
-            :to="item.to"
-            :disabled="item.disabled"
-          />
-        </v-col>
-      </v-row>
-    </div>
+    <v-row v-if="modules.length">
+      <v-col v-for="(item,i) in modules" :key="i">
+        <ModuleCard
+          :title="item.title"
+          :subtitle="item.subtitle"
+          :icon="item.icon"
+          :to="item.to"
+          :disabled="item.disabled"
+        />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import Breadcrumbs from '~/components/core/Breadcrumbs.vue'
+import sectionTitle from '~/components/core/sectionTitle.vue'
 import ModuleCard from '~/components/core/ModuleCard.vue'
 
 export default {
   components: {
     Breadcrumbs,
+    sectionTitle,
     ModuleCard
   },
 

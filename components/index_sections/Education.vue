@@ -1,13 +1,6 @@
 <template>
   <v-container id="education" class="pa-4">
-    <h2 class="display-1 my-4">
-      <v-btn @click="$vuetify.goTo('#education')" icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Educación
-    </h2>
+    <sectionTitle id="education-title" title="Educación" />
 
     <v-row>
       <v-col
@@ -29,10 +22,12 @@
 </template>
 
 <script>
+import sectionTitle from '~/components/core/sectionTitle.vue'
 import EducationPlaceCard from '~/components/core/EducationPlaceCard.vue'
 
 export default {
   components: {
+    sectionTitle,
     EducationPlaceCard
   },
   data () {

@@ -1,13 +1,6 @@
 <template>
   <v-container id="portfolio" class="pa-4">
-    <h2 class="display-1 my-4">
-      <v-btn @click="$vuetify.goTo('#portfolio')" icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Portafolio
-    </h2>
+    <sectionTitle id="portfolio-title" title="Portafolio" />
 
     <v-row>
       <v-col
@@ -95,7 +88,13 @@
 </template>
 
 <script>
+import sectionTitle from '~/components/core/sectionTitle.vue'
+
 export default {
+  components: {
+    sectionTitle
+  },
+
   data () {
     return {
       portfolio: [

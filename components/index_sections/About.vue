@@ -1,13 +1,6 @@
 <template>
   <v-container id="about" class="pa-4">
-    <h2 class="display-1 my-4">
-      <v-btn @click="$vuetify.goTo('#about')" icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Resumen
-    </h2>
+    <sectionTitle id="summary-title" title="Resumen" />
 
     <div class="row">
       <v-col>
@@ -20,11 +13,11 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {
+import sectionTitle from '~/components/core/sectionTitle.vue'
 
-    }
+export default {
+  components: {
+    sectionTitle
   }
 }
 </script>

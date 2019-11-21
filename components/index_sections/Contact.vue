@@ -1,13 +1,6 @@
 <template>
   <v-container id="contact" class="pa-4">
-    <h2 class="display-1 my-4">
-      <v-btn @click="$vuetify.goTo('#contact')" icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Contacto
-    </h2>
+    <sectionTitle id="contact-title" title="Contacto" />
 
     <div class="row">
       <v-col>
@@ -61,12 +54,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import sectionTitle from '~/components/core/sectionTitle.vue'
 
 export default {
-  data () {
-    return {
-
-    }
+  components: {
+    sectionTitle
   },
 
   computed: {
@@ -80,7 +72,6 @@ export default {
       gitlab: state => state.profile.gitlab
     })
   }
-
 }
 </script>
 

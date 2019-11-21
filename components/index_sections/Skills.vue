@@ -1,13 +1,6 @@
 <template>
   <v-container id="skills" class="pa-4">
-    <h2 class="display-1 my-4">
-      <v-btn @click="$vuetify.goTo('#skills')" icon color="primary">
-        <v-icon>
-          mdi-pound
-        </v-icon>
-      </v-btn>
-      Habilidades
-    </h2>
+    <sectionTitle id="skills-title" title="Habilidades" />
 
     <v-row>
       <v-col cols="12" xs="12" sm="12" md="4">
@@ -36,10 +29,12 @@
 </template>
 
 <script>
+import sectionTitle from '~/components/core/sectionTitle.vue'
 import SkillsCard from '~/components/core/SkillsCard.vue'
 
 export default {
   components: {
+    sectionTitle,
     SkillsCard
   },
   data () {
