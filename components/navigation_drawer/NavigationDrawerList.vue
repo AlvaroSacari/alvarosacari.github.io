@@ -15,7 +15,6 @@
         />
       </template>
     </v-list>
-    <v-divider />
     <v-list v-if="items2.length" dense nav>
       <v-subheader>Admin</v-subheader>
       <template v-for="(item,i) in items2">

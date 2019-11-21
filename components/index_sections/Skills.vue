@@ -10,21 +10,21 @@
     </h2>
 
     <v-row>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" xs="12" sm="12" md="4">
         <SkillsCard
           :skills="frontendSkills"
           :filters="frontendFilters"
           title="Frontend"
         />
       </v-col>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" xs="12" sm="6" md="4">
         <SkillsCard
           :skills="backendSkills"
           :filters="backendFilters"
           title="Backend"
         />
       </v-col>
-      <v-col cols="12" sm="4">
+      <v-col cols="12" xs="12" sm="6" md="4">
         <SkillsCard
           :skills="otherSkills"
           :filters="otherFilters"

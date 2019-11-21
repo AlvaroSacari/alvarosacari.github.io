@@ -2,8 +2,8 @@
   <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
 
-    <div id="dashboard">
-      <h2 class="py-4">
+    <div id="dashboard" class="pt-3">
+      <h2>
         <v-btn @click="$vuetify.goTo('#dashboard')" icon color="primary">
           <v-icon>
             mdi-pound

@@ -2,8 +2,8 @@
   <v-container class="pa-4">
     <Breadcrumbs :items="breadcrumbs" />
 
-    <div id="education-places-table">
-      <h2 class="py-4">
+    <div id="education-places-table" class="pt-3">
+      <h2>
         <v-btn @click="$vuetify.goTo('#education-places-table')" icon color="primary">
           <v-icon>
             mdi-pound
@@ -12,57 +12,61 @@
         Educación
       </h2>
 
-      <v-card :loading="loadingData">
-        <v-app-bar flat>
-          <v-text-field
-            v-model="search"
-            dense
-            outlined
-            placeholder="Buscar"
-            hide-details
-            prepend-inner-icon="mdi-magnify"
-            clearable
-          />
-          <v-btn @click="showCreateModal=true" color="primary" class="mx-2 text-capitalize">
-            Agregar
-          </v-btn>
-          <v-btn height="40" width="40" icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </v-app-bar>
+      <v-row>
+        <v-col>
+          <v-card :loading="loadingData">
+            <v-app-bar flat>
+              <v-text-field
+                v-model="search"
+                dense
+                outlined
+                placeholder="Buscar"
+                hide-details
+                prepend-inner-icon="mdi-magnify"
+                clearable
+              />
+              <v-btn @click="showCreateModal=true" color="primary" class="mx-2 text-capitalize">
+                Agregar
+              </v-btn>
+              <v-btn height="40" width="40" icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+              </v-btn>
+            </v-app-bar>
 
-        <v-data-table
-          :headers="headers"
-          :items="educationPlaces"
-          :search="search"
-          calculate-widths
-        >
-          <template v-slot:item.action="{ item }">
-            <div class="mx-n3">
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <v-btn v-on="on" @click="editItem(item)" color="info" icon>
-                    <v-icon>
-                      mdi-pencil
-                    </v-icon>
-                  </v-btn>
-                </template>
-                <span>Editar</span>
-              </v-tooltip>
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on }">
-                  <v-btn v-on="on" @click="editItem(item)" color="error" icon>
-                    <v-icon>
-                      mdi-delete
-                    </v-icon>
-                  </v-btn>
-                </template>
-                <span>Eliminar</span>
-              </v-tooltip>
-            </div>
-          </template>
-        </v-data-table>
-      </v-card>
+            <v-data-table
+              :headers="headers"
+              :items="educationPlaces"
+              :search="search"
+              calculate-widths
+            >
+              <template v-slot:item.action="{ item }">
+                <div class="mx-n3">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                      <v-btn v-on="on" @click="editItem(item)" color="info" icon>
+                        <v-icon>
+                          mdi-pencil
+                        </v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Editar</span>
+                  </v-tooltip>
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                      <v-btn v-on="on" @click="editItem(item)" color="error" icon>
+                        <v-icon>
+                          mdi-delete
+                        </v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Eliminar</span>
+                  </v-tooltip>
+                </div>
+              </template>
+            </v-data-table>
+          </v-card>
+        </v-col>
+      </v-row>
     </div>
 
     <CreateEducationPlaceModal v-model="showCreateModal" />

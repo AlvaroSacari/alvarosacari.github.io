@@ -13,38 +13,28 @@
       <v-col
         v-for="(item,i) in universities"
         :key="i"
+        cols="12"
+        xs="12"
+        sm="6"
       >
-        <v-card
-          hover
-          min-height="100%"
-          max-width="430px"
-          class="mx-auto"
-        >
-          <v-img
-            :src="item.img"
-            height="200px"
-          />
-
-          <v-card-title class="break-word">
-            {{ item.title }}
-          </v-card-title>
-
-          <v-card-text>
-            <div v-if="item.subtitle1 !== ''">
-              {{ item.subtitle1 }}
-            </div>
-            <div v-if="item.subtitle2 !== ''">
-              {{ item.subtitle2 }}
-            </div>
-          </v-card-text>
-        </v-card>
+        <EducationPlaceCard
+          :image="item.img"
+          :title="item.title"
+          :subtitle1="item.subtitle1"
+          :subtitle2="item.subtitle2"
+        />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import EducationPlaceCard from '~/components/core/EducationPlaceCard.vue'
+
 export default {
+  components: {
+    EducationPlaceCard
+  },
   data () {
     return {
       universities: [

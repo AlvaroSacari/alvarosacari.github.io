@@ -13,18 +13,22 @@
       <v-col
         v-for="(item,i) in portfolio"
         :key="i"
+        cols="12"
+        xs="12"
+        sm="6"
+        md="4"
       >
         <v-card
-          max-width="300px"
           class="mx-auto"
           hover
+          height="100%"
         >
           <v-img
             :src="item.img"
             :lazy-src="item.img"
+            :aspect-ratio="16/9"
             class="grey lighten-2 hoverimage"
             position="top center"
-            height="200px"
           >
             <template v-slot:placeholder>
               <v-row
@@ -44,7 +48,6 @@
           </v-card-title>
 
           <v-card-text>{{ item.subtitle }}</v-card-text>
-
           <v-card-actions>
             <v-spacer />
             <v-tooltip bottom>
