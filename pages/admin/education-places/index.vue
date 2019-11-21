@@ -3,7 +3,7 @@
     <Breadcrumbs :items="breadcrumbs" />
 
     <div id="education-places-table" class="pt-3">
-      <h2>
+      <h2 class="my-2">
         <v-btn @click="$vuetify.goTo('#education-places-table')" icon color="primary">
           <v-icon>
             mdi-pound
