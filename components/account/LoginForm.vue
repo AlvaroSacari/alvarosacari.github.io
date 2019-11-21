@@ -94,6 +94,20 @@ export default {
     }
   },
 
+  computed: {
+    userName () {
+      if (!this.$auth.loggedIn) {
+        return ''
+      }
+
+      if (this.$auth.user.displayName) {
+        return this.$auth.user.displayName
+      }
+
+      return this.$auth.user.email.split('@')[0]
+    }
+  },
+
   watch: {
     email (newValue, oldValue) {
       if (newValue && newValue !== oldValue) {
@@ -120,6 +134,7 @@ export default {
     login () {
       if (!this.$refs.loginForm.validate()) { return }
 
+      this.$snackbar.info('Iniciando sesión ...')
       this.processingForm = true
 
       const data = {
@@ -128,7 +143,11 @@ export default {
       }
 
       this.$auth.loginWith('firebaseAuth', { data })
+        .then((response) => {
+          this.$snackbar.success(`Bienvenido ${this.userName}`)
+        })
         .catch(() => {
+          this.$snackbar.error('Ocurrió un error al iniciar sesión')
           this.formError = true
         })
         .finally(() => {

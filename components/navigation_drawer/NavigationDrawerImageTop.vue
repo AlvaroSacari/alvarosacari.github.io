@@ -29,7 +29,7 @@
             <v-list-item-action v-if="$auth.loggedIn">
               <v-tooltip bottom>
                 <template v-slot:activator="{on}">
-                  <v-btn v-on="on" @click="$auth.logout()" icon>
+                  <v-btn v-on="on" @click="logout" icon>
                     <v-icon>mdi-logout-variant</v-icon>
                   </v-btn>
                 </template>
@@ -79,6 +79,22 @@ export default {
       }
 
       return require('~/assets/images/material.jpg')
+    }
+  },
+
+  methods: {
+    logout () {
+      const name = this.nameToShow
+
+      this.$snackbar.info('Cerrando sesión ...')
+
+      this.$auth.logout()
+        .then((response) => {
+          this.$snackbar.success(`Hasta luego ${name}`)
+        })
+        .catch(() => {
+          this.$snackbar.error('Ocurrió un error al cerrar sesión')
+        })
     }
   }
 }
