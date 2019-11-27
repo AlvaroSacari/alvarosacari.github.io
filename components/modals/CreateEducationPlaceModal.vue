@@ -103,14 +103,17 @@ export default {
     create () {
       if (!this.$refs.createEducationPlaceForm.validate()) { return false }
 
+      this.$snackbar.info('Creando centro de educación')
       this.processingForm = true
       const data = this.form
 
       this.addItem({ data })
         .then((response) => {
+          this.$snackbar.success('El centro de educación se ha creado correctamente')
           this.showModal = false
         })
         .catch((error) => {
+          this.$snackbar.error(`Ocurrió un error: ${error.message}`)
           this.error = error
         })
         .finally(() => {
