@@ -1,6 +1,7 @@
 <template>
   <div>
-    <GoogleAuthButton @update-google-logging-in="updateProcessingForm" class="mb-4" />
+    <GoogleAuthButton class="mb-4" />
+
     <v-btn block class="mb-4" color="#1873eb" disabled>
       <v-icon left>
         mdi-facebook
@@ -10,7 +11,7 @@
 
     <v-fade-transition>
       <v-alert
-        v-if="formError"
+        v-if="loginError"
         prominent
         type="error"
         border="left"
@@ -27,14 +28,14 @@
       lazy-validation
     >
       <v-text-field
-        v-model="email"
+        v-model="form.email"
         :rules="rules.email"
         type="email"
         outlined
         label="Correo electrónico"
       />
       <v-text-field
-        v-model="password"
+        v-model="form.password"
         :type="showPassword ? 'text': 'password'"
         :rules="rules.password"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -45,8 +46,8 @@
     </v-form>
 
     <v-btn
-      :loading="processingForm"
-      :disabled="!validForm || processingForm"
+      :loading="processingLogin"
+      :disabled="!validForm || processingLogin"
       type="submit"
       class="mb-4"
       block
@@ -67,6 +68,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import GoogleAuthButton from '~/components/account/social_login/GoogleAuthButton.vue'
 
 export default {
@@ -76,11 +78,12 @@ export default {
 
   data () {
     return {
-      email: '',
-      password: '',
-      processingForm: false,
+      form: {
+        email: '',
+        password: ''
+      },
+      loginError: null,
       validForm: true,
-      formError: false,
       rules: {
         email: [
           v => !!v || 'El correo electrónico es requerido',
@@ -95,63 +98,36 @@ export default {
   },
 
   computed: {
-    userName () {
-      if (!this.$auth.loggedIn) {
-        return ''
-      }
-
-      if (this.$auth.user.displayName) {
-        return this.$auth.user.displayName
-      }
-
-      return this.$auth.user.email.split('@')[0]
-    }
+    ...mapState({
+      processingLogin: state => state.user.processingLogin
+    })
   },
 
   watch: {
-    email (newValue, oldValue) {
+    'form.email' (newValue, oldValue) {
       if (newValue && newValue !== oldValue) {
-        this.formError = false
+        this.loginError = null
       }
     },
 
-    password (newValue, oldValue) {
+    'form.password' (newValue, oldValue) {
       if (newValue && newValue !== oldValue) {
-        this.formError = false
+        this.loginError = null
       }
-    },
-
-    processingForm (newValue, oldValue) {
-      this.$emit('update-processing-form', newValue)
     }
   },
 
   methods: {
-    updateProcessingForm (value) {
-      this.processingForm = value
-    },
+    ...mapActions({
+      userLogin: 'user/userLogin'
+    }),
 
     login () {
       if (!this.$refs.loginForm.validate()) { return }
-
-      this.$snackbar.info('Iniciando sesión ...')
-      this.processingForm = true
-
-      const data = {
-        email: this.email,
-        password: this.password
-      }
-
-      this.$auth.loginWith('firebaseAuth', { data })
-        .then((response) => {
-          this.$snackbar.success(`Bienvenido ${this.userName}`)
-        })
-        .catch(() => {
-          this.$snackbar.error('Ocurrió un error al iniciar sesión')
-          this.formError = true
-        })
-        .finally(() => {
-          this.processingForm = false
+      const data = this.form
+      this.userLogin({ data })
+        .catch((error) => {
+          this.loginError = error
         })
     }
   }

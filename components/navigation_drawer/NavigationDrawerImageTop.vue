@@ -22,14 +22,14 @@
             </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title v-text="nameToShow" />
+              <v-list-item-title v-text="userName" />
               <v-list-item-subtitle v-text="emailToShow" />
             </v-list-item-content>
 
             <v-list-item-action v-if="$auth.loggedIn">
               <v-tooltip bottom>
                 <template v-slot:activator="{on}">
-                  <v-btn v-on="on" @click="logout" icon>
+                  <v-btn v-on="on" @click="userLogout" icon>
                     <v-icon>mdi-logout-variant</v-icon>
                   </v-btn>
                 </template>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -53,17 +53,9 @@ export default {
       email: state => state.profile.email
     }),
 
-    nameToShow () {
-      if (!this.$auth.loggedIn) {
-        return this.name
-      }
-
-      if (this.$auth.user.displayName) {
-        return this.$auth.user.displayName
-      }
-
-      return this.$auth.user.email.split('@')[0]
-    },
+    ...mapGetters({
+      userName: 'user/userName'
+    }),
 
     emailToShow () {
       if (!this.$auth.loggedIn) {
@@ -77,25 +69,14 @@ export default {
       if (!this.$auth.loggedIn) {
         return require('~/assets/images/code.jpeg')
       }
-
       return require('~/assets/images/material.jpg')
     }
   },
 
   methods: {
-    logout () {
-      const name = this.nameToShow
-
-      this.$snackbar.info('Cerrando sesión ...')
-
-      this.$auth.logout()
-        .then((response) => {
-          this.$snackbar.success(`Hasta luego ${name}`)
-        })
-        .catch(() => {
-          this.$snackbar.error('Ocurrió un error al cerrar sesión')
-        })
-    }
+    ...mapActions({
+      userLogout: 'user/userLogout'
+    })
   }
 }
 </script>

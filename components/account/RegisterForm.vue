@@ -1,16 +1,5 @@
 <template>
   <div>
-    <v-fade-transition>
-      <v-alert
-        v-if="formError"
-        prominent
-        type="error"
-        border="left"
-      >
-        {{ formError.message }}
-      </v-alert>
-    </v-fade-transition>
-
     <v-form
       id="registerForm"
       ref="registerForm"
@@ -19,14 +8,14 @@
       lazy-validation
     >
       <v-text-field
-        v-model="email"
+        v-model="form.email"
         :rules="rules.email"
         type="email"
         outlined
         label="Correo electrónico"
       />
       <v-text-field
-        v-model="password"
+        v-model="form.password"
         :type="showPassword ? 'text': 'password'"
         :rules="rules.password"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -37,8 +26,8 @@
     </v-form>
     <div class="text-center">
       <v-btn
-        :loading="processingForm"
-        :disabled="!validForm || processingForm"
+        :loading="processingRegister"
+        :disabled="!validForm || processingRegister"
         type="submit"
         block
         form="registerForm"
@@ -51,16 +40,16 @@
 </template>
 
 <script>
-import { auth } from '~/services/firebaseInit.js'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data () {
     return {
-      email: '',
-      password: '',
-      processingForm: false,
+      form: {
+        email: '',
+        password: ''
+      },
       validForm: true,
-      formError: null,
       rules: {
         email: [
           v => !!v || 'El correo electrónico es requerido',
@@ -75,61 +64,34 @@ export default {
     }
   },
 
-  watch: {
-    email (newValue, oldValue) {
-      if (newValue && newValue !== oldValue) {
-        this.formError = null
-      }
-    },
-
-    password (newValue, oldValue) {
-      if (newValue && newValue !== oldValue) {
-        this.formError = null
-      }
-    }
+  computed: {
+    ...mapState({
+      processingRegister: state => state.user.processingRegister
+    })
   },
 
   methods: {
-    register () {
-      if (!this.$refs.registerForm.validate()) { return }
+    ...mapActions({
+      userRegister: 'user/userRegister',
+      userLogin: 'user/userLogin'
+    }),
 
-      this.processingForm = true
-      this.$emit('update-processing-form', true)
-
-      auth.createUserWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.login(this.email, this.password)
-        })
-        .catch((error) => {
-          this.formError = error
-        })
-        .finally(() => {
-          this.processingForm = false
-          this.$emit('update-processing-form', false)
-        })
-    },
-
-    login (email, password) {
-      this.processingForm = true
-      this.$emit('update-processing-form', true)
-
+    async register () {
       const data = {
-        email: this.email,
-        password: this.password
+        email: this.form.email,
+        password: this.form.password
       }
 
-      this.$auth.loginWith('firebaseAuth', { data })
-        .then((response) => {
-          this.$router.push({ name: 'admin-dashboard' })
-        })
-        .catch((error) => {
-          this.formError = error
-        })
-        .finally(() => {
-          this.processingForm = false
-          this.$emit('update-processing-form', false)
-        })
+      if (!this.$refs.registerForm.validate()) { return }
+
+      try {
+        await this.userRegister({ data })
+        await this.userLogin({ data })
+        this.$router.push({ name: 'admin-dashboard' })
+      } catch (error) {
+      }
     }
+
   }
 }
 </script>

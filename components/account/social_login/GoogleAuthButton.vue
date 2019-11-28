@@ -1,8 +1,8 @@
 <template>
   <v-btn
-    :loading="logging"
-    :disabled="logging"
-    @click="loginWithGoogle"
+    :loading="processingLogin"
+    :disabled="processingLogin"
+    @click="userLoginWithGoogle"
     block
     color="#e34134"
     dark
@@ -15,55 +15,22 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  data () {
-    return {
-      logging: false,
-      error: null
-    }
-  },
-
   computed: {
-    userName () {
-      if (!this.$auth.loggedIn) {
-        return ''
-      }
-
-      if (this.$auth.user.displayName) {
-        return this.$auth.user.displayName
-      }
-
-      return this.$auth.user.email.split('@')[0]
-    }
-  },
-
-  watch: {
-    logging (newValue, oldValue) {
-      this.$emit('update-google-logging-in', newValue)
-    }
+    ...mapState({
+      processingLogin: state => state.user.processingLogin
+    })
   },
 
   methods: {
-    loginWithGoogle () {
-      this.logging = true
-      this.$snackbar.info('Iniciando sesión ...')
-
-      this.$auth.strategies.firebaseAuth.loginWithGoogle()
-        .then((response) => {
-          this.$snackbar.success(`Bienvenido ${this.userName}`)
-        })
-        .catch((error) => {
-          this.$snackbar.error('Ocurrió un error al iniciar sesión')
-          this.error = error
-        })
-        .finally(() => {
-          this.logging = false
-        })
-    }
+    ...mapActions({
+      userLoginWithGoogle: 'user/userLoginWithGoogle'
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>

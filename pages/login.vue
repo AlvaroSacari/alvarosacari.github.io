@@ -1,13 +1,13 @@
 <template>
   <v-container class="pa-4">
     <v-col>
-      <v-card :loading="loadingCard" max-width="300" class="mx-auto">
+      <v-card :loading="processingLogin" max-width="300" class="mx-auto">
         <v-app-bar flat>
           <v-toolbar-title>Iniciar sesión</v-toolbar-title>
         </v-app-bar>
         <v-divider />
         <v-card-text>
-          <LoginForm @update-processing-form="updateLoadingCard" />
+          <LoginForm />
         </v-card-text>
       </v-card>
     </v-col>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import LoginForm from '~/components/account/LoginForm.vue'
 
 export default {
@@ -22,16 +23,10 @@ export default {
     LoginForm
   },
 
-  data () {
-    return {
-      loadingCard: false
-    }
-  },
-
-  methods: {
-    updateLoadingCard (value) {
-      this.loadingCard = value
-    }
+  computed: {
+    ...mapState({
+      processingLogin: state => state.user.processingLogin
+    })
   }
 }
 </script>
