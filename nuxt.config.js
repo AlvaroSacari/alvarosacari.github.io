@@ -27,7 +27,9 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/transition-page.scss'
+    '~/assets/scss/transition-page.scss',
+    '~/assets/scss/vuetify-hacks.scss',
+    '~/assets/scss/sweetalert2-variables.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -51,7 +53,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'vue-sweetalert2/nuxt'
   ],
 
   /*
@@ -88,7 +91,7 @@ export default {
   */
   vuetify: {
     treeShake: true,
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/scss/vuetify-custom-variables.scss'],
     theme: {
       dark: true,
       themes: {

@@ -5,7 +5,7 @@
 
     <v-row>
       <v-col>
-        <v-card :loading="loadingData">
+        <v-card :loading="processingBind || processingAdd || processingDelete">
           <v-app-bar flat>
             <v-text-field
               v-model="search"
@@ -16,7 +16,7 @@
               prepend-inner-icon="mdi-magnify"
               clearable
             />
-            <v-btn @click="showCreateModal=true" color="primary" class="mx-2 text-capitalize">
+            <v-btn @click="showAddItemRow=true" color="primary" class="mx-2 text-capitalize">
               Agregar
             </v-btn>
             <v-btn height="40" width="40" icon>
@@ -25,11 +25,14 @@
           </v-app-bar>
 
           <v-data-table
-            :headers="headers"
+            :headers="tableHeaders"
             :items="educationPlaces"
             :search="search"
             calculate-widths
           >
+            <template v-if="showAddItemRow" v-slot:body.prepend="{ headers}">
+              <CreateEducationPlaceForm v-model="showAddItemRow" :headers="headers" />
+            </template>
             <template v-slot:item.action="{ item }">
               <div class="mx-n3">
                 <v-tooltip bottom>
@@ -44,7 +47,7 @@
                 </v-tooltip>
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on }">
-                    <v-btn v-on="on" @click="editItem(item)" color="error" icon>
+                    <v-btn v-on="on" @click="showDelete(item.id)" color="error" icon>
                       <v-icon>
                         mdi-delete
                       </v-icon>
@@ -58,22 +61,20 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <CreateEducationPlaceModal v-model="showCreateModal" />
-  </v-container>
+</v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import Breadcrumbs from '~/components/core/Breadcrumbs.vue'
 import sectionTitle from '~/components/core/sectionTitle.vue'
-import CreateEducationPlaceModal from '~/components/modals/CreateEducationPlaceModal.vue'
+import CreateEducationPlaceForm from '~/components/forms/CreateEducationPlaceForm.vue'
 
 export default {
   components: {
     Breadcrumbs,
     sectionTitle,
-    CreateEducationPlaceModal
+    CreateEducationPlaceForm
   },
 
   data () {
@@ -88,38 +89,56 @@ export default {
           to: { name: 'admin-education-places' }
         }
       ],
-      headers: [
+      tableHeaders: [
         { text: 'Lugar', value: 'place' },
         { text: 'Grado', value: 'degree' },
         { text: 'Detalle', value: 'detail' },
         { text: '', value: 'action', sortable: false, width: 85 }
       ],
-      loadingData: false,
       search: '',
-      showCreateModal: false
+      showCreateModal: false,
+      showAddItemRow: false,
+      showEditModal: false
     }
   },
 
   computed: {
     ...mapState({
-      educationPlaces: state => state.educationPlaces.items
+      educationPlaces: state => state.educationPlaces.items,
+      processingBind: state => state.educationPlaces.processingBind,
+      processingAdd: state => state.educationPlaces.processingAdd,
+      processingDelete: state => state.educationPlaces.processingDelete
     })
   },
 
   created () {
-    this.loadingData = true
-    this.bindEducationPlaces().finally(() => {
-      this.loadingData = false
-    })
+    this.bindEducationPlaces()
   },
 
   methods: {
     ...mapActions({
-      bindEducationPlaces: 'educationPlaces/bindEducationPlaces'
+      bindEducationPlaces: 'educationPlaces/bindEducationPlaces',
+      deleteItem: 'educationPlaces/deleteItem'
     }),
 
-    editItem (item) {}
+    editItem (item) {},
 
+    showDelete (id) {
+      const swal = this.$swal({
+        title: '¿Está seguro de eliminar el registro?',
+        text: 'Esta acción no se podrá revertir',
+        type: 'warning',
+        confirmButtonColor: 'red',
+        confirmButtonText: 'Si, eliminar',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar'
+      })
+
+      swal.then((result) => {
+        if (result.dismiss) { return false }
+        this.deleteItem({ id })
+      })
+    }
   }
 }
 </script>

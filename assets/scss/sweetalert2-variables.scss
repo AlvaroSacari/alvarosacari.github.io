@@ -1,0 +1,16 @@
+// style.scss
+@import 'sweetalert2/src/variables';
+
+$swal2-font: 'Comfortaa', sans-serif;
+$swal2-title-font-size: 1.5rem;
+$swal2-content-font-size: 1rem;
+$swal2-input-font-size: 1rem;
+$swal2-validation-message-font-size: 1rem;
+$swal2-footer-font-size: 1rem;
+
+$swal2-border-radius: 8px;
+$swal2-input-border-radius: 8px;
+$swal2-confirm-button-border-radius: 8px;
+$swal2-cancel-button-border-radius: 8px;
+
+@import 'sweetalert2/src/sweetalert2';
