@@ -54,6 +54,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
+    'nuxt-imagemin',
     'vue-sweetalert2/nuxt'
   ],
 
