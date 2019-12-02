@@ -1,7 +1,7 @@
 <template>
   <v-parallax
+    :src="require('~/assets/images/vbanner.jpg')"
     height="300"
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
   >
     <v-row
       align="center"
