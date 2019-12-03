@@ -1,6 +1,6 @@
 # alvarosacari.github.io
 
-> My top-notch Nuxt.js project
+> alvarosacari.github.io public page
 
 ## Build Setup
 

@@ -2,18 +2,47 @@ import colors from 'vuetify/lib/util/colors'
 import en from 'vuetify/lib/locale/en'
 import es from 'vuetify/lib/locale/es'
 
+const socialMeta = {
+  url: 'https://alvarosacari.github.io',
+  title: 'Alvaro Sacari',
+  description: 'Desarrollador Frontend',
+  img: '/og_image.jpeg',
+  locale: 'es_ES',
+  twitter: '@AlvaroSacari',
+  themeColor: '#fff'
+}
+
 export default {
   mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + socialMeta.title,
+    title: socialMeta.title,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: socialMeta.description },
+      // Global
+      { name: 'author', content: socialMeta.url },
+      { name: 'publisher', content: socialMeta.url },
+      { name: 'apple-mobile-web-app-title', content: socialMeta.title },
+      { name: 'theme-color', content: socialMeta.themeColor },
+      // Fb
+      { name: 'og:title', content: socialMeta.title },
+      { name: 'og:description', content: socialMeta.description },
+      { name: 'og:type', content: 'website' },
+      { name: 'og:url', content: socialMeta.url },
+      { name: 'og:image', content: socialMeta.img },
+      { name: 'og:locale', content: socialMeta.locale },
+      // Twitter
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: socialMeta.twitter },
+      { name: 'twitter:creator', content: socialMeta.twitter },
+      { name: 'twitter:title', content: socialMeta.title },
+      { name: 'twitter:description', content: socialMeta.description },
+      { name: 'twitter:image', content: socialMeta.img }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
