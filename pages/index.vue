@@ -2,8 +2,8 @@
   <div>
     <StartSection />
     <AboutSection />
-    <EducationSection />
     <SkillsSection />
+    <EducationSection />
     <ContactSection />
   </div>
 </template>

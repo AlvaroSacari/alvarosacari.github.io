@@ -1,41 +1,59 @@
 <template>
   <v-container id="skills" class="pa-4">
     <sectionTitle id="skills-title" title="Habilidades" />
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title>Front End Languages</v-list-item-title>
+        <v-list-item-subtitle>
+          ✅ HTML5, CSS3, SASS/SCSS & LESS, JavaScript
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title>Front End Built/Static Generator tools</v-list-item-title>
+        <v-list-item-subtitle>
+          ✅ Gulp, Webpack
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title>Experienced JavaScript Framework</v-list-item-title>
+        <v-list-item-subtitle>
+          ✅ VueJS(Vuex), ReactJS(Redux), Angular8
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title>Version Control</v-list-item-title>
+        <v-list-item-subtitle>
+          ✅ Git (Github, Gitlab)
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item two-line class=" mb-4">
+      <v-list-item-content>
+        <v-list-item-title>Experienced in working with Agile Team</v-list-item-title>
+        <v-list-item-subtitle>
+          ✅ JIRA
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
 
-    <v-row>
-      <v-col cols="12" xs="12" sm="12" md="4">
-        <SkillsCard
-          :skills="frontendSkills"
-          :filters="frontendFilters"
-          title="Frontend"
-        />
-      </v-col>
-      <v-col cols="12" xs="12" sm="6" md="4">
-        <SkillsCard
-          :skills="backendSkills"
-          :filters="backendFilters"
-          title="Backend"
-        />
-      </v-col>
-      <v-col cols="12" xs="12" sm="6" md="4">
-        <SkillsCard
-          :skills="otherSkills"
-          :filters="otherFilters"
-          title="Otros"
-        />
-      </v-col>
-    </v-row>
+    <p class="mb-0">
+      Con 4 años de experiencia práctica en la codificación eficiente de sitios web y aplicaciones que utilizan HTML5, CSS3 y JavaScript modernos, estoy seguro de que seré una excelente opción para los trabajos de desarrollo front-end.
+    </p>
   </v-container>
 </template>
 
 <script>
 import sectionTitle from '~/components/core/sectionTitle.vue'
-import SkillsCard from '~/components/core/SkillsCard.vue'
 
 export default {
   components: {
-    sectionTitle,
-    SkillsCard
+    sectionTitle
   },
   data () {
     return {

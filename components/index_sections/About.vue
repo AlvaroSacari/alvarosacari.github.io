@@ -4,8 +4,9 @@
 
     <div class="row">
       <v-col>
+        <p>Soy desarrollador web desde el año 2016. Por los ultimos 4 años, Me he especializado en el desarrollo front-end y SPA (Single Page Application).</p>
         <p class="mb-0">
-          Desarrollador de aplicaciones web desde el año 2015, con altas capacidades de aprendizaje, trabajo en equipo y buenos métodos de comunicación, siempre aprendiendo las nuevas tecnologías y dispuesto a resolver cualquier problema. Actualmente desarrollando el frontend de aplicaciones con Vue.js.
+          Crear sitios web faciles de usar y amigables para el usuario son realmente una de mis pasiones. Busco activamente nuevas tecnologías y me mantengo actualizado sobre las tendencias y los avances de la industria para mi cliente.
         </p>
       </v-col>
     </div>
