@@ -54,6 +54,7 @@ export default {
   .input-images, .output-images {
     img {
       position: absolute;
+      opacity: 0;
     }
   }
 
@@ -174,7 +175,7 @@ export default {
   @keyframes entering-the-card {
     0%   { transform: rotate(-270deg) translateY(360px) rotate(-110deg); opacity: 0.1; }
     30%   { opacity: 1; }
-    50%   { opacity: 1; }
+    50%   { opacity: 0.1; }
     100% { transform: rotate(-220deg) translateY(360px) rotate(-90deg); opacity: 0; }
   }
 
@@ -182,7 +183,8 @@ export default {
   @keyframes leaving-the-card {
     0%   { transform: rotate(0deg) translateY(90px) rotate(-70deg); opacity: 0.1; }
     30%   { opacity: 1; }
-    50%   { opacity: 0; }
+    50%   { opacity: 0.1; }
+    60%   { opacity: 0; }
     100% { transform: rotate(50deg) translateY(540px) rotate(-50deg); opacity: 0; }
   }
 }
